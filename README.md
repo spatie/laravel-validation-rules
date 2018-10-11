@@ -23,6 +23,7 @@ The package will automatically register itself.
 
 - [`authorized`](#authorized)
 - [`enum`](#enum)
+- [`modelIds`](#modelIds)
 
 ### `authorized`
 
@@ -52,16 +53,7 @@ public function rules()
 
 Here's an example where we validate if the user can edit the a `Model` with the `model_id` value as it's primary key.
 
-```php
-// in a `FormRequest`
 
-public function rules()
-{
-    return [
-        'model_id' => [new Authorized('edit', Model::class)],
-    ];
-}
-```
 
 ### `authorized`
 
@@ -91,6 +83,23 @@ public function rules()
 ```
 
 The request will only be valid if the role contains `admin` or `reviewer`.
+
+- `modelIds`
+
+Determine if the all given ids exist for the given model class. 
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'model_ids' => ['array', new ModelIds(Model::class)],
+    ];
+}
+```
+
+The validation will pass if all ids given in `model_ids` exist for the `Model`.
 
 ### Testing
 

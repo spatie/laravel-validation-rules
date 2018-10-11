@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Foundation\Auth\User;
 
 $factory->define(User::class, function (Faker\Generator $faker) {
