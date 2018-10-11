@@ -27,7 +27,7 @@ class TestEnum
 
     public static function toArray()
     {
-        $reflection =  new ReflectionClass(TestEnum::class);
+        $reflection = new ReflectionClass(TestEnum::class);
 
         return $reflection->getConstants();
     }

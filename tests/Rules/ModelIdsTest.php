@@ -2,8 +2,6 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
-use App\Models\Event;
-use App\Models\Flow;
 use Illuminate\Foundation\Auth\User;
 use Spatie\ValidationRules\Rules\ModelIds;
 use Spatie\ValidationRules\Tests\TestCase;
