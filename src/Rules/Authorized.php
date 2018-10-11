@@ -17,11 +17,7 @@ class Authorized implements Rule
     {
         $this->ability = $ability;
 
-        if (! is_array($arguments)) {
-            $arguments = [$arguments];
-        }
-
-        $this->arguments = $arguments;
+        $this->arguments = array_wrap($arguments);
     }
 
     public function passes($attribute, $value)

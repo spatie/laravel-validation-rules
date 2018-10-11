@@ -9,9 +9,13 @@ class ModelIds implements Rule
     /** @var string */
     protected $modelClassName;
 
-    public function __construct(string $modelClassName)
+    /** @var string */
+    protected $column;
+
+    public function __construct(string $modelClassName, string $column = 'id')
     {
         $this->modelClassName = $modelClassName;
+        $this->column = $column;
     }
 
     public function passes($attribute, $value)
@@ -20,7 +24,7 @@ class ModelIds implements Rule
 
         $modelIds = array_unique($value);
 
-        $modelCount = $this->modelClassName::whereIn('id', $modelIds)->count();
+        $modelCount = $this->modelClassName::whereIn($this->column, $modelIds)->count();
 
         return count($modelIds) === $modelCount;
     }

@@ -24,4 +24,16 @@ class ModelIdsTest extends TestCase
         $this->assertTrue($rule->passes('userIds', [1, 2]));
         $this->assertTrue($rule->passes('userIds', [1]));
     }
+
+    /** @test */
+    public function it_can_validate_existence_of_models_by_column()
+    {
+        $rule = new ModelIds(User::class, 'email');
+
+        $this->assertTrue($rule->passes('userEmails', []));
+
+        $this->assertFalse($rule->passes('userEmails', ['user@example.com']));
+        factory(User::class)->create(['email' => 'user@example.com']);
+        $this->assertTrue($rule->passes('userEmails', ['user@example.com']));
+    }
 }
