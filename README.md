@@ -53,7 +53,16 @@ public function rules()
 
 Here's an example where we validate if the user can edit a `Model` with the `model_id` value as its primary key.
 
+```php
+// in a `FormRequest`
 
+public function rules()
+{
+    return [
+        'model_id' => [new Authorized('edit', Model::class)],
+    ];
+}
+```
 
 ### `enum`
 
