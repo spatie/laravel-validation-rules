@@ -55,7 +55,7 @@ Here's an example where we validate if the user can edit the a `Model` with the 
 
 
 
-### `authorized`
+### `enum`
 
 This rule will validate if the value under validation is part of the given enum class. We assume that the enum class has a static `toArray` method that returns all valid values. If you're looking for a good enum class, take a look at [myclabs/php-enum](https://github.com/myclabs/php-enum);
 
