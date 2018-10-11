@@ -23,7 +23,7 @@ The package will automatically register itself.
 
 - [`authorized`](#authorized)
 - [`enum`](#enum)
-- [`modelIds`](#modelIds)
+- [`modelIds`](#modelids)
 
 ### `authorized`
 
@@ -37,7 +37,7 @@ Gate::define('lowUserId', function (User $user) {
 });
 ```
 
-All users with an id more than 100 will received a validation error.
+All users with an id more than 100 will receive a validation error.
 
 
 ```php
@@ -51,7 +51,7 @@ public function rules()
 }
 ```
 
-Here's an example where we validate if the user can edit the a `Model` with the `model_id` value as it's primary key.
+Here's an example where we validate if the user can edit a `Model` with the `model_id` value as its primary key.
 
 
 
@@ -86,7 +86,7 @@ The request will only be valid if the role contains `admin` or `reviewer`.
 
 ### `modelIds`
 
-Determine if the all given ids exist for the given model class. 
+Determine if all the given ids exist for the given model class. 
 
 ```php
 // in a `FormRequest`
