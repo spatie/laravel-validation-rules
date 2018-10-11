@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Rules\Authorized;
 
-class ValidationRuleTest extends TestCase
+class AuthorizedTest extends TestCase
 {
     public function setUp()
     {
