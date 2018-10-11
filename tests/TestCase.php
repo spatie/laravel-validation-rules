@@ -2,14 +2,11 @@
 
 namespace Spatie\ValidationRules\Tests;
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Spatie\ValidationRules\ValidationRulesServiceProvider;
-use Spatie\Backup\Test\TestHelper;
-use Spatie\Backup\BackupServiceProvider;
+use Illuminate\Database\Schema\Blueprint;
 use Orchestra\Testbench\TestCase as Orchestra;
+use Spatie\ValidationRules\ValidationRulesServiceProvider;
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
-
 
 abstract class TestCase extends Orchestra
 {
@@ -19,7 +16,7 @@ abstract class TestCase extends Orchestra
 
         $this->setUpDatabase();
 
-        $this->app->make(EloquentFactory::class)->load(__DIR__ . '/factories');
+        $this->app->make(EloquentFactory::class)->load(__DIR__.'/factories');
     }
 
     protected function getPackageProviders($app)

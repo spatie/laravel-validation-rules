@@ -1,7 +1,6 @@
 <?php
 
 
-use App\Models\Enums\UserRole;
 use Illuminate\Foundation\Auth\User;
 
 $factory->define(User::class, function (Faker\Generator $faker) {
