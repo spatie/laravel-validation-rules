@@ -2,14 +2,13 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
-use App\Models\Enums\UserRole;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use Spatie\ValidationRules\Rules\Authorized;
 use Spatie\ValidationRules\Tests\TestCase;
+use Spatie\ValidationRules\Rules\Authorized;
 
-class AuthorizedTest extends TestCase
+class ValidationRuleTest extends TestCase
 {
     public function setUp()
     {
@@ -77,10 +76,10 @@ class AuthorizedTest extends TestCase
             return $argumentA + $argumentB === 3;
         });
 
-        $rule = new Authorized('arrayAbilityName', [1,2]);
+        $rule = new Authorized('arrayAbilityName', [1, 2]);
         $this->assertTrue($rule->passes('attribute', 'value'));
 
-        $rule = new Authorized('arrayAbilityName', [2,3]);
+        $rule = new Authorized('arrayAbilityName', [2, 3]);
         $this->assertFalse($rule->passes('attribute', 'value'));
     }
 }
