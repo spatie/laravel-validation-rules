@@ -33,7 +33,7 @@ Gate::define('lowUserId', function (User $user) {
 });
 ```
 
-All users with an id less more 100 will received a validation error.
+All users with an id more than 100 will received a validation error.
 
 
 ```php
