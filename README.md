@@ -29,16 +29,15 @@ The package will automatically register itself.
 
 Determine if the user is authorized to perform an ability. 
 
-With this definition:
+Consider the following definition:
 
 ```php
 Gate::define('lowUserId', function (User $user) {
-    return $user->id <= 100;
+    return $user->id < 100;
 });
 ```
 
-All users with an id more than 100 will receive a validation error.
-
+All users with id 100 or higher will receive a validation error using the following validation rules:
 
 ```php
 // in a `FormRequest`
@@ -51,7 +50,7 @@ public function rules()
 }
 ```
 
-Here's an example where we validate if the user can edit a `Model` with the `model_id` value as its primary key.
+The following example will validate if the logged in user can edit the `Model` with the given `model_id` as its primary key.
 
 ```php
 // in a `FormRequest`
@@ -68,7 +67,7 @@ public function rules()
 
 This rule will validate if the value under validation is part of the given enum class. We assume that the enum class has a static `toArray` method that returns all valid values. If you're looking for a good enum class, take a look at [myclabs/php-enum](https://github.com/myclabs/php-enum);
 
-Given this enum class
+Consider the following enum class:
 
 ```php
 class UserRole extends MyCLabs\Enum\Enum
@@ -78,7 +77,7 @@ class UserRole extends MyCLabs\Enum\Enum
 }
 ```
 
-you can use the `Enum` rule like this:
+The `Enum` rule can be used like this:
 
 ```php
 // in a `FormRequest`
@@ -91,11 +90,11 @@ public function rules()
 }
 ```
 
-The request will only be valid if the role contains `admin` or `reviewer`.
+The request will only be valid if `role` contains `admin` or `reviewer`.
 
 ### `modelIds`
 
-Determine if all the given ids exist for the given model class. 
+Determine if all of the ids in the input array exist for the given model class. 
 
 ```php
 // in a `FormRequest`
@@ -108,7 +107,7 @@ public function rules()
 }
 ```
 
-The validation will pass if all ids given in `model_ids` exist for the `Model`.
+The validation will pass if all `model_ids` exist for the `Model`.
 
 ### Testing
 
