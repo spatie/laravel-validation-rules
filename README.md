@@ -1,13 +1,12 @@
-# Very short description of the package
+# A set of useful Laravel validation rules
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-validation-rules.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-validation-rules)
 [![Build Status](https://img.shields.io/travis/spatie/laravel-validation-rules/master.svg?style=flat-square)](https://travis-ci.org/spatie/laravel-validation-rules)
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/laravel-validation-rules.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/laravel-validation-rules)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-validation-rules.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-validation-rules)
 
-This is where your description should go. Try and limit it to a paragraph or two.
+This repository contains some useful Laravel validation rules.
 
-## Installation
 
 You can install the package via composer:
 
@@ -15,11 +14,50 @@ You can install the package via composer:
 composer require spatie/laravel-validation-rules
 ```
 
-## Usage
+The package will automatically register itself.
 
-``` php
-$ValidationRules = new Spatie\ValidationRules();
-echo $ValidationRules->echoPhrase('Hello, Spatie!');
+
+## Rules
+
+- [`authorized`](#authorized)
+
+### `authorized`
+
+Determine if the user is authorized to perform an ability. 
+
+With this definition:
+
+```php
+Gate::define('lowUserId', function (User $user) {
+    return $user->id < 100;
+});
+```
+
+All users with an id less more 100 will received a validation error.
+
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'field_under_validation' => [new Authorized('lowUserId')],
+    ];
+}
+```
+
+Here's an example where we validate if the user can edit the a `Model` with the `model_id` value as it's primary key.
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'model_id' => [new Authorized('edit', Model::class)],
+    ];
+}
 ```
 
 ### Testing
