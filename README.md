@@ -29,7 +29,7 @@ With this definition:
 
 ```php
 Gate::define('lowUserId', function (User $user) {
-    return $user->id < 100;
+    return $user->id <= 100;
 });
 ```
 
