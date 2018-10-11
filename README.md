@@ -22,6 +22,7 @@ The package will automatically register itself.
 ## Rules
 
 - [`authorized`](#authorized)
+- [`enum`](#enum)
 
 ### `authorized`
 
@@ -61,6 +62,35 @@ public function rules()
     ];
 }
 ```
+
+### `authorized`
+
+This rule will validate if the value under validation is part of the given enum class. We assume that the enum class has a static `toArray` method that returns all valid values. If you're looking for a good enum class, take a look at [myclabs/php-enum](https://github.com/myclabs/php-enum);
+
+Given this enum class
+
+```php
+class UserRole extends MyCLabs\Enum\Enum
+{
+    const ADMIN = 'admin';
+    const REVIEWER = 'reviewer';
+}
+```
+
+you can use the `Enum` rule like this:
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'role' => [new Enum(UserRole::class)],
+    ];
+}
+```
+
+The request will only be valid if the role contains `admin` or `reviewer`.
 
 ### Testing
 
