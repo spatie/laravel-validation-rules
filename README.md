@@ -84,7 +84,7 @@ public function rules()
 
 The request will only be valid if the role contains `admin` or `reviewer`.
 
-- `modelIds`
+### `modelIds`
 
 Determine if the all given ids exist for the given model class. 
 
