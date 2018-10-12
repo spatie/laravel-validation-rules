@@ -27,6 +27,7 @@ The package will automatically register itself.
 
 ### `authorized`
 
+**DO NOT USE THIS METHOD, CURRENTLY BROKEN, WILL BE FIXED SOON**
 Determine if the user is authorized to perform an ability. 
 
 Consider the following definition:
