@@ -3,7 +3,6 @@
 namespace Spatie\ValidationRules\Tests\Rules;
 
 use Illuminate\Foundation\Auth\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Rules\Authorized;

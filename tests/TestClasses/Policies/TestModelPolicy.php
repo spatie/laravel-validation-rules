@@ -2,8 +2,8 @@
 
 namespace Spatie\ValidationRules\Tests\TestClasses\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Spatie\ValidationRules\Tests\TestClasses\Models\TestModel;
 
 class TestModelPolicy
