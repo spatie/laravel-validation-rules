@@ -19,7 +19,7 @@ composer require spatie/laravel-validation-rules
 The package will automatically register itself.
 
 
-## Rules
+## Available rules
 
 - [`authorized`](#authorized)
 - [`enum`](#enum)
