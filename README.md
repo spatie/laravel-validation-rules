@@ -27,31 +27,23 @@ The package will automatically register itself.
 
 ### `authorized`
 
-**DO NOT USE THIS METHOD, CURRENTLY BROKEN, WILL BE FIXED SOON**
-Determine if the user is authorized to perform an ability. 
+Determine if the user is authorized to perform an ability on an instance of the given model. The id of the model is the field under validation 
 
-Consider the following definition:
-
-```php
-Gate::define('lowUserId', function (User $user) {
-    return $user->id < 100;
-});
-```
-
-All users with id 100 or higher will receive a validation error using the following validation rules:
+Consider the following policy:
 
 ```php
-// in a `FormRequest`
-
-public function rules()
+class ModelPolicy
 {
-    return [
-        'field_under_validation' => [new Authorized('lowUserId')],
-    ];
+    use HandlesAuthorization;
+
+    public function edit(User $user, Model $model): bool
+    {
+        return $model->user->id === $user->id;
+    }
 }
 ```
 
-The following example will validate if the logged in user can edit the `Model` with the given `model_id` as its primary key.
+This validation rule will pass if the id of the logged in user matches the `user_id` on `TestModel` who's it is in the `model_id` key of the request.
 
 ```php
 // in a `FormRequest`
@@ -59,7 +51,7 @@ The following example will validate if the logged in user can edit the `Model` w
 public function rules()
 {
     return [
-        'model_id' => [new Authorized('edit', Model::class)],
+        'model_id' => [new Authorized('edit', TestModel::class)],
     ];
 }
 ```

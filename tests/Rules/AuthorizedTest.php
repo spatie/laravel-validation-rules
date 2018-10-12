@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Rules\Authorized;
+use Spatie\ValidationRules\Tests\TestClasses\Models\TestModel;
+use Spatie\ValidationRules\Tests\TestClasses\Policies\TestModelPolicy;
 
 class AuthorizedTest extends TestCase
 {
@@ -14,72 +16,64 @@ class AuthorizedTest extends TestCase
     {
         parent::setUp();
 
-        $this->actingAs(factory(User::class)->create());
+        Gate::policy(TestModel::class, TestModelPolicy::class);
     }
 
     /** @test */
     public function it_will_return_true_if_the_gate_returns_true_for_the_given_ability_name()
     {
-        Gate::define('abilityName', function () {
-            return true;
-        });
+        $rule = new Authorized('edit', TestModel::class);
 
-        $rule = new Authorized('abilityName');
+        $user = factory(User::class)->create(['id' => 1]);
+        TestModel::create([
+            'id' => 1,
+            'user_id' => $user->id,
+        ]);
 
-        $this->assertTrue($rule->passes('attribute', 'value'));
+        $this->actingAs($user);
+
+        $this->assertTrue($rule->passes('attribute', '1'));
     }
 
     /** @test */
-    public function it_will_return_false_if_the_gate_returns_true_for_the_given_ability_name()
+    public function it_will_return_false_if_noone_is_logged_in()
     {
-        Gate::define('otherAbilityName', function () {
-            return false;
-        });
+        $rule = new Authorized('edit', TestModel::class);
 
-        $rule = new Authorized('otherAbilityName');
+        $user = factory(User::class)->create(['id' => 1]);
+        TestModel::create([
+            'id' => 1,
+            'user_id' => $user->id,
+        ]);
 
-        $this->assertFalse($rule->passes('attribute', 'value'));
+        $this->assertFalse($rule->passes('attribute', '1'));
     }
 
     /** @test */
-    public function it_will_return_false_if_there_is_noone_logged_in()
+    public function it_will_return_false_if_the_model_is_not_found()
     {
-        Auth::logout();
+        $rule = new Authorized('edit', TestModel::class);
 
-        Gate::define('noUserAbilityName', function () {
-            return true;
-        });
+        $user = factory(User::class)->create(['id' => 1]);
+        TestModel::create([
+            'id' => 1,
+            'user_id' => $user->id,
+        ]);
 
-        $rule = new Authorized('noUserAbilityName');
-
-        $this->assertFalse($rule->passes('attribute', 'value'));
+        $this->assertFalse($rule->passes('attribute', '2'));
     }
 
     /** @test */
-    public function it_can_accept_an_argument()
+    public function it_will_return_false_if_the_gate_returns_false()
     {
-        Gate::define('argumentAbilityName', function (User $user, $argument) {
-            return $argument === true;
-        });
+        $rule = new Authorized('edit', TestModel::class);
 
-        $rule = new Authorized('argumentAbilityName', true);
-        $this->assertTrue($rule->passes('attribute', 'value'));
+        $user = factory(User::class)->create(['id' => 1]);
+        TestModel::create([
+            'id' => 1,
+            'user_id' => 2,
+        ]);
 
-        $rule = new Authorized('argumentAbilityName', false);
-        $this->assertFalse($rule->passes('attribute', 'value'));
-    }
-
-    /** @test */
-    public function it_can_accept_multiple_arguments_as_an_array()
-    {
-        Gate::define('arrayAbilityName', function (User $user, int $argumentA, int $argumentB) {
-            return $argumentA + $argumentB === 3;
-        });
-
-        $rule = new Authorized('arrayAbilityName', [1, 2]);
-        $this->assertTrue($rule->passes('attribute', 'value'));
-
-        $rule = new Authorized('arrayAbilityName', [2, 3]);
-        $this->assertFalse($rule->passes('attribute', 'value'));
+        $this->assertFalse($rule->passes('attribute', '1'));
     }
 }

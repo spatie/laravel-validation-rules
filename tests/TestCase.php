@@ -36,5 +36,12 @@ abstract class TestCase extends Orchestra
             $table->string('remember_token');
             $table->timestamps();
         });
+
+        Schema::create('test_models', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name')->nullable();
+            $table->unsignedInteger('user_id');
+            $table->timestamps();
+        });
     }
 }

@@ -13,16 +13,24 @@ class Authorized implements Rule
     /** @var array */
     protected $arguments;
 
-    public function __construct(string $ability, $arguments = [])
+    public function __construct(string $ability, string $className)
     {
         $this->ability = $ability;
 
-        $this->arguments = array_wrap($arguments);
+        $this->className = $className;
     }
 
     public function passes($attribute, $value)
     {
-        return optional(Auth::user())->can($this->ability, $this->arguments) ?? false;
+        if (! $user = Auth::user()) {
+            return false;
+        }
+
+        if (! $model = $this->className::find($value)) {
+            return false;
+        }
+
+        return $user->can($this->ability, $model);
     }
 
     public function message()
