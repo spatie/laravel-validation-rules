@@ -2,17 +2,25 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
+use Carbon\Carbon;
 use Spatie\ValidationRules\Rules\PastDate;
 use Spatie\ValidationRules\Tests\TestCase;
 
 class PastDateTest extends TestCase
 {
+    public function setUp()
+    {
+        parent::setUp();
+
+        Carbon::setTestNow(Carbon::make('2018-01-01 00:00:00'));
+    }
+
     /** @test */
     public function it_will_return_true_when_is_past_date()
     {
         $rule = new PastDate();
 
-        $this->assertTrue($rule->passes('attribute', now()->subDay()));
+        $this->assertTrue($rule->passes('attribute', '2017-01-01'));
     }
 
     /** @test */
@@ -20,6 +28,6 @@ class PastDateTest extends TestCase
     {
         $rule = new PastDate();
 
-        $this->assertFalse($rule->passes('attribute', now()->addDay()));
+        $this->assertFalse($rule->passes('attribute', '2018-01-02'));
     }
 }
