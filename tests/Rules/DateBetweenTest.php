@@ -2,7 +2,7 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 use Spatie\ValidationRules\Rules\DateBetween;
 use Spatie\ValidationRules\Tests\TestCase;
 
