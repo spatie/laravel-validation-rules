@@ -94,7 +94,10 @@ The request will only be valid if `role` contains `admin` or `reviewer`.
 
 ### `modelsExist`
 
-Determine if all of the ids in the input array exist for the given model class. 
+Determine if all of the values in the input array exist as attributes for the given model class. 
+
+By default the rule assumes that you want to validate using `id` attribute. In the example below the validation will pass if all `model_ids` exist for the `Model`.
+
 
 ```php
 // in a `FormRequest`
@@ -107,7 +110,19 @@ public function rules()
 }
 ```
 
-The validation will pass if all `model_ids` exist for the `Model`.
+
+You can also pass an attribute name as the second argument. In the example below the validation will pass if there are users for each email given in the `user_emails` of the request.
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'user_emails' => ['array', new ModelsExist(User::class, 'emails')],
+    ];
+}
+```
 
 ### Testing
 
