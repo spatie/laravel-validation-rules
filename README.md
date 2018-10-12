@@ -51,7 +51,7 @@ This validation rule will pass if the id of the logged in user matches the `user
 public function rules()
 {
     return [
-        'model_id' => [new Authorized(TestModel::class)],
+        'model_id' => [new Authorized('edit', TestModel::class)],
     ];
 }
 ```

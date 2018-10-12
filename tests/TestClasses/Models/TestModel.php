@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User;
 
 class TestModel extends Model
 {
+    protected $guarded = [];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

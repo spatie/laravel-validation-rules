@@ -39,7 +39,7 @@ abstract class TestCase extends Orchestra
 
         Schema::create('test_models', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->unsignedInteger('user_id');
             $table->timestamps();
         });

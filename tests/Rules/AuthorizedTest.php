@@ -25,7 +25,7 @@ class AuthorizedTest extends TestCase
         $rule = new Authorized('edit', TestModel::class);
 
         $user = factory(User::class)->create(['id' => 1]);
-        factory(TestModel::class)->create([
+        TestModel::create([
             'id' => 1,
             'user_id' => $user->id,
         ]);
@@ -41,7 +41,7 @@ class AuthorizedTest extends TestCase
         $rule = new Authorized('edit', TestModel::class);
 
         $user = factory(User::class)->create(['id' => 1]);
-        factory(TestModel::class)->create([
+        TestModel::create([
             'id' => 1,
             'user_id' => $user->id,
         ]);
@@ -55,7 +55,7 @@ class AuthorizedTest extends TestCase
         $rule = new Authorized('edit', TestModel::class);
 
         $user = factory(User::class)->create(['id' => 1]);
-        factory(TestModel::class)->create([
+        TestModel::create([
             'id' => 1,
             'user_id' => $user->id,
         ]);
@@ -69,7 +69,7 @@ class AuthorizedTest extends TestCase
         $rule = new Authorized('edit', TestModel::class);
 
         $user = factory(User::class)->create(['id' => 1]);
-        factory(TestModel::class)->create([
+        TestModel::create([
             'id' => 1,
             'user_id' => 2,
         ]);
