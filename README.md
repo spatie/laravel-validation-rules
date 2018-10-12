@@ -24,9 +24,9 @@ The package will automatically register itself.
 - [`authorized`](#authorized)
 - [`enum`](#enum)
 - [`modelsExist`](#modelids)
-- [`FutureDate`](#futuredate)
-- [`PastDate`](#pastdate)
-- [`DateBetween`](#datebetween)
+- [`futureDate`](#futuredate)
+- [`pastDate`](#pastdate)
+- [`dateBetween`](#date)
 
 ### `authorized`
 
@@ -168,11 +168,11 @@ public function rules()
 }
 ```
 
-By default the boundary dates are not included, you can include them by calling `orEquals`.
+By default the boundary dates are included, you can exluding them by calling `excludeBoundaries`.
 
 ```php
 (new DateBetween(now()->subWeek(), now()->addWeek()))
-    ->orEquals()
+    ->excludeBoundaries()
 ```
 
 If you only want to determine whether a date is between full days, you can use `withoutTime`.
