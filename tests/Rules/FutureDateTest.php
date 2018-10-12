@@ -2,8 +2,8 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
-use Spatie\ValidationRules\Rules\FutureDate;
 use Spatie\ValidationRules\Tests\TestCase;
+use Spatie\ValidationRules\Rules\FutureDate;
 
 class FutureDateTest extends TestCase
 {
