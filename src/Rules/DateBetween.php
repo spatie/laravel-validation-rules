@@ -2,15 +2,15 @@
 
 namespace Spatie\ValidationRules\Rules;
 
-use Illuminate\Support\Carbon;
 use Illuminate\Contracts\Validation\Rule;
+use Carbon\Carbon;
 
 class DateBetween implements Rule
 {
-    /** @var \Illuminate\Support\Carbon */
+    /** @var \Carbon\Carbon */
     protected $start;
 
-    /** @var \Illuminate\Support\Carbon */
+    /** @var \Carbon\Carbon */
     protected $end;
 
     /** @var bool */
