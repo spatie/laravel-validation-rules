@@ -23,7 +23,7 @@ The package will automatically register itself.
 
 - [`authorized`](#authorized)
 - [`enum`](#enum)
-- [`modelIds`](#modelids)
+- [`modelsExist`](#modelids)
 
 ### `authorized`
 
@@ -92,7 +92,7 @@ public function rules()
 
 The request will only be valid if `role` contains `admin` or `reviewer`.
 
-### `modelIds`
+### `modelsExist`
 
 Determine if all of the ids in the input array exist for the given model class. 
 
@@ -102,7 +102,7 @@ Determine if all of the ids in the input array exist for the given model class.
 public function rules()
 {
     return [
-        'model_ids' => ['array', new ModelIds(Model::class)],
+        'model_ids' => ['array', new ModelsExist(Model::class)],
     ];
 }
 ```

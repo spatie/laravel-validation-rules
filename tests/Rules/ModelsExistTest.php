@@ -3,15 +3,15 @@
 namespace Spatie\ValidationRules\Tests\Rules;
 
 use Illuminate\Foundation\Auth\User;
-use Spatie\ValidationRules\Rules\ModelIds;
+use Spatie\ValidationRules\Rules\ModelsExist;
 use Spatie\ValidationRules\Tests\TestCase;
 
-class ModelIdsTest extends TestCase
+class ModelsExistTest extends TestCase
 {
     /** @test */
     public function it_will_return_true_if_all_model_ids_exist()
     {
-        $rule = new ModelIds(User::class);
+        $rule = new ModelsExist(User::class);
 
         $this->assertTrue($rule->passes('userIds', []));
 
@@ -28,7 +28,7 @@ class ModelIdsTest extends TestCase
     /** @test */
     public function it_can_validate_existence_of_models_by_column()
     {
-        $rule = new ModelIds(User::class, 'email');
+        $rule = new ModelsExist(User::class, 'email');
 
         $this->assertTrue($rule->passes('userEmails', []));
 

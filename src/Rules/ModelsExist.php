@@ -4,18 +4,19 @@ namespace Spatie\ValidationRules\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class ModelIds implements Rule
+class ModelsExist implements Rule
 {
     /** @var string */
     protected $modelClassName;
 
     /** @var string */
-    protected $column;
+    protected $attribute;
 
-    public function __construct(string $modelClassName, string $column = 'id')
+    public function __construct(string $modelClassName, string $attribute = 'id')
     {
         $this->modelClassName = $modelClassName;
-        $this->column = $column;
+
+        $this->attribute = $attribute;
     }
 
     public function passes($attribute, $value)
@@ -24,7 +25,7 @@ class ModelIds implements Rule
 
         $modelIds = array_unique($value);
 
-        $modelCount = $this->modelClassName::whereIn($this->column, $modelIds)->count();
+        $modelCount = $this->modelClassName::whereIn($this->attribute, $modelIds)->count();
 
         return count($modelIds) === $modelCount;
     }
