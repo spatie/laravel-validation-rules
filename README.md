@@ -24,6 +24,9 @@ The package will automatically register itself.
 - [`authorized`](#authorized)
 - [`enum`](#enum)
 - [`modelsExist`](#modelids)
+- [`FutureDate`](#futuredate)
+- [`PastDate`](#pastdate)
+- [`DateBetween`](#datebetween)
 
 ### `authorized`
 
@@ -115,6 +118,68 @@ public function rules()
         'user_emails' => ['array', new ModelsExist(User::class, 'emails')],
     ];
 }
+```
+
+### `futureDate`
+
+Determine if a date is in the future.
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'date_from' => ['date', new FutureDate()],
+    ];
+}
+```
+
+### `pastDate`
+
+Determine if a date is in the past.
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'date_from' => ['date', new PastDate()],
+    ];
+}
+```
+
+### `dateBetween`
+
+Determine if a date is between two other dates.
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'date_from' => [
+            'date', 
+            new DateBetween(now()->subWeek(), now()->addWeek()),
+        ],
+    ];
+}
+```
+
+By default the boundary dates are not included, you can include them by calling `orEquals`.
+
+```php
+(new DateBetween(now()->subWeek(), now()->addWeek()))
+    ->orEquals()
+```
+
+If you only want to determine whether a date is between full days, you can use `withoutTime`.
+
+```php
+(new DateBetween(now()->subWeek(), now()->addWeek()))
+    ->withoutTime()
 ```
 
 ### Testing
