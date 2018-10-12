@@ -2,8 +2,8 @@
 
 namespace Spatie\ValidationRules\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use Carbon\Carbon;
+use Illuminate\Contracts\Validation\Rule;
 
 class DateBetween implements Rule
 {

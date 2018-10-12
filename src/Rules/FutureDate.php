@@ -2,7 +2,7 @@
 
 namespace Spatie\ValidationRules\Rules;
 
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 use Illuminate\Contracts\Validation\Rule;
 
 class FutureDate implements Rule
