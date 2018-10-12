@@ -24,6 +24,8 @@ The package will automatically register itself.
 - [`authorized`](#authorized)
 - [`enum`](#enum)
 - [`modelsExist`](#modelids)
+- [`dateGreaterThan`](#dategreaterthan)
+- [`dateLessThan`](#datelessthan)
 
 ### `authorized`
 
@@ -122,6 +124,56 @@ public function rules()
         'user_emails' => ['array', new ModelsExist(User::class, 'emails')],
     ];
 }
+```
+
+### `dateGreaterThan`
+
+Determine if a date is greater than another date.
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'date_from' => [
+            'date', 
+            new DateGreaterThan(now()),
+        ],
+    ];
+}
+```
+
+By default the boundary date is not included, you can include it by calling `orEquals`.
+
+```php
+(new DateGreaterThan(now()))
+    ->orEquals()
+```
+
+### `dateLessThan`
+
+Determine if a date is less than another date.
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'date_from' => [
+            'date', 
+            new DateLessThan(now()),
+        ],
+    ];
+}
+```
+
+By default the boundary date is not included, you can include it by calling `orEquals`.
+
+```php
+(new DateLessThan(now()))
+    ->orEquals()
 ```
 
 ### Testing
