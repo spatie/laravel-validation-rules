@@ -12,15 +12,17 @@ class DateBetweenTest extends TestCase
     {
         parent::setUp();
 
-        Carbon::setTestNow(Carbon::create(2018, 01, 01, 00, 00, 00));
+        Carbon::setTestNow(Carbon::make('2018-01-01 00:00:00'));
     }
 
     /** @test */
-    public function it_will_return_true_when_between()
+    public function it_will_return_true_when_between_or_equals()
     {
         $rule = new DateBetween(now(), now()->addDays(2));
 
-        $this->assertTrue($rule->passes('attribute', now()->addDays(1)));
+        $this->assertTrue($rule->passes('attribute', '2018-01-01'));
+        $this->assertTrue($rule->passes('attribute', '2018-01-02'));
+        $this->assertTrue($rule->passes('attribute', '2018-01-03'));
     }
 
     /** @test */
@@ -28,52 +30,43 @@ class DateBetweenTest extends TestCase
     {
         $rule = new DateBetween(now(), now()->addDays(2));
 
-        $this->assertFalse($rule->passes('attribute', now()->subDays(1)));
-        $this->assertFalse($rule->passes('attribute', now()->addDays(3)));
+        $this->assertFalse($rule->passes('attribute', '2017-01-01'));
+        $this->assertFalse($rule->passes('attribute', '2019-01-01'));
     }
 
     /** @test */
-    public function it_will_return_false_when_on_boundary()
-    {
-        $rule = new DateBetween(now(), now()->addDays(2));
-
-        $this->assertFalse($rule->passes('attribute', now()));
-        $this->assertFalse($rule->passes('attribute', now()->addDays(2)));
-    }
-
-    /** @test */
-    public function it_will_return_true_when_on_boundary_with_equals_option()
+    public function it_will_return_false_when_on_boundary_and_boundaries_are_excluded()
     {
         $rule = (new DateBetween(now(), now()->addDays(2)))
-            ->orEquals();
+            ->excludeBoundaries();
 
-        $this->assertTrue($rule->passes('attribute', now()));
-        $this->assertTrue($rule->passes('attribute', now()->addDays(2)));
+        $this->assertFalse($rule->passes('attribute', '2018-01-01'));
+        $this->assertTrue($rule->passes('attribute', '2018-01-02'));
+        $this->assertFalse($rule->passes('attribute', '2018-01-03'));
     }
 
     /** @test */
     public function it_will_return_true_when_comparing_without_time_and_within_day_boundary()
     {
         $rule = (new DateBetween(
-            Carbon::createFromTime(12, 00, 00),
-            Carbon::createFromTime(12, 00, 00)->addDays(2)
+            Carbon::make('2018-01-01 12:00:00'),
+            Carbon::make('2018-01-03 12:00:00')
         ))
-            ->orEquals()
             ->withoutTime();
 
-        $this->assertTrue($rule->passes('attribute', Carbon::createFromTime(10, 00, 00)));
-        $this->assertTrue($rule->passes('attribute', Carbon::createFromTime(14, 00, 00)->addDays(2)));
+        $this->assertTrue($rule->passes('attribute', Carbon::make('2018-01-01 10:00:00')));
+        $this->assertTrue($rule->passes('attribute', Carbon::make('2018-01-03 14:00:00')));
     }
 
     /** @test */
     public function it_will_return_false_when_comparing_with_time_and_within_day_boundary()
     {
         $rule = (new DateBetween(
-            Carbon::createFromTime(12, 00, 00),
-            Carbon::createFromTime(12, 00, 00)->addDays(2)
-        ))->orEquals();
+            Carbon::make('2018-01-01 12:00:00'),
+            Carbon::make('2018-01-03 12:00:00')
+        ));
 
-        $this->assertFalse($rule->passes('attribute', Carbon::createFromTime(10, 00, 00)));
-        $this->assertFalse($rule->passes('attribute', Carbon::createFromTime(14, 00, 00)->addDays(2)));
+        $this->assertFalse($rule->passes('attribute', Carbon::make('2018-01-01 10:00:00')));
+        $this->assertFalse($rule->passes('attribute', Carbon::make('2018-01-03 14:00:00')));
     }
 }

@@ -14,7 +14,7 @@ class DateBetween implements Rule
     protected $end;
 
     /** @var bool */
-    protected $orEquals = false;
+    protected $orEquals = true;
 
     public function __construct(Carbon $start, Carbon $end)
     {
@@ -23,9 +23,16 @@ class DateBetween implements Rule
         $this->end = $end->copy();
     }
 
-    public function orEquals(bool $orEquals = true): DateBetween
+    public function includeBoundaries(): DateBetween
     {
-        $this->orEquals = $orEquals;
+        $this->orEquals = true;
+
+        return $this;
+    }
+
+    public function excludeBoundaries(): DateBetween
+    {
+        $this->orEquals = false;
 
         return $this;
     }
