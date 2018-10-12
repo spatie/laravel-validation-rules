@@ -3,8 +3,8 @@
 namespace Spatie\ValidationRules\Tests\Rules;
 
 use Carbon\Carbon;
-use Spatie\ValidationRules\Rules\DateBetween;
 use Spatie\ValidationRules\Tests\TestCase;
+use Spatie\ValidationRules\Rules\DateBetween;
 
 class DateBetweenTest extends TestCase
 {
