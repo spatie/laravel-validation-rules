@@ -12,15 +12,16 @@ class DateGreaterThanTest extends TestCase
     {
         parent::setUp();
 
-        Carbon::setTestNow(Carbon::create(2018, 01, 01, 00, 00, 00));
+        Carbon::setTestNow(Carbon::make('2018-01-01'));
     }
 
     /** @test */
-    public function it_returns_true_when_greater()
+    public function it_returns_true_when_greater_or_equal()
     {
         $rule = new DateGreaterThan(now());
 
-        $this->assertTrue($rule->passes('attribute', now()->addDay()));
+        $this->assertTrue($rule->passes('attribute', '2018-01-01'));
+        $this->assertTrue($rule->passes('attribute', '2018-01-02'));
     }
 
     /** @test */
@@ -28,16 +29,15 @@ class DateGreaterThanTest extends TestCase
     {
         $rule = new DateGreaterThan(now());
 
-        $this->assertFalse($rule->passes('attribute', now()->subDays(1)));
-        $this->assertFalse($rule->passes('attribute', now()));
+        $this->assertFalse($rule->passes('attribute', '2017-01-01'));
     }
 
     /** @test */
-    public function it_returns_true_when_equal_with_equals_option()
+    public function it_returns_false_with_boundaries_excluded()
     {
         $rule = (new DateGreaterThan(now()))
-            ->orEquals();
+            ->excludeBoundaries();
 
-        $this->assertTrue($rule->passes('attribute', now()));
+        $this->assertFalse($rule->passes('attribute', '2018-01-01'));
     }
 }

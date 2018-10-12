@@ -11,16 +11,23 @@ class DateGreaterThan implements Rule
     protected $date;
 
     /** @var bool */
-    protected $orEquals = false;
+    protected $orEquals = true;
 
     public function __construct(Carbon $date)
     {
         $this->date = $date->copy();
     }
 
-    public function orEquals(bool $orEquals = true): DateGreaterThan
+    public function includeBoundaries(): DateGreaterThan
     {
-        $this->orEquals = $orEquals;
+        $this->orEquals = true;
+
+        return $this;
+    }
+
+    public function excludeBoundaries(): DateGreaterThan
+    {
+        $this->orEquals = false;
 
         return $this;
     }

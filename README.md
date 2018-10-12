@@ -144,11 +144,11 @@ public function rules()
 }
 ```
 
-By default the boundary date is not included, you can include it by calling `orEquals`.
+By default the boundary date is included, you can exclude it by calling `excludeBoundary`.
 
 ```php
 (new DateGreaterThan(now()))
-    ->orEquals()
+    ->excludeBoundary()
 ```
 
 ### `dateLessThan`
@@ -169,11 +169,11 @@ public function rules()
 }
 ```
 
-By default the boundary date is not included, you can include it by calling `orEquals`.
+By default the boundary date is included, you can exclude it by calling `excludeBoundary`.
 
 ```php
 (new DateLessThan(now()))
-    ->orEquals()
+    ->excludeBoundary()
 ```
 
 ### Testing
