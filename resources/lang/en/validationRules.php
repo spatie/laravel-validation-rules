@@ -2,6 +2,7 @@
 
 return [
     'authorized' => 'You are not authorized to use this value.',
+    'cidr' => 'This must be in CIDR format.',
     'enum' => 'This is not a valid value.',
     'model_ids' => 'Some of the given ids do not extist',
 ];
