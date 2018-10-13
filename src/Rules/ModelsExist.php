@@ -19,7 +19,7 @@ class ModelsExist implements Rule
         $this->attribute = $attribute;
     }
 
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
         $value = array_filter($value);
 
@@ -30,7 +30,7 @@ class ModelsExist implements Rule
         return count($modelIds) === $modelCount;
     }
 
-    public function message()
+    public function message(): string
     {
         return __('validationRules.model_ids');
     }
