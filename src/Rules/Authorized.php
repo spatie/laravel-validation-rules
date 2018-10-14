@@ -20,7 +20,7 @@ class Authorized implements Rule
         $this->className = $className;
     }
 
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
         if (! $user = Auth::user()) {
             return false;
@@ -33,7 +33,7 @@ class Authorized implements Rule
         return $user->can($this->ability, $model);
     }
 
-    public function message()
+    public function message(): string
     {
         return __('validationRules.authorized');
     }
