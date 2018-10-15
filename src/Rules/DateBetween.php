@@ -46,14 +46,14 @@ class DateBetween implements Rule
         return $this;
     }
 
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
         $date = Carbon::make($value);
 
         return $date->between($this->start, $this->end, $this->orEquals);
     }
 
-    public function message()
+    public function message(): string
     {
         return __('validationRules.date_between');
     }
