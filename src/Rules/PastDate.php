@@ -7,14 +7,14 @@ use Illuminate\Contracts\Validation\Rule;
 
 class PastDate implements Rule
 {
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
         $date = Carbon::make($value);
 
         return $date->isPast();
     }
 
-    public function message()
+    public function message(): string
     {
         return __('validationRules.past_date');
     }
