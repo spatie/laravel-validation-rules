@@ -135,6 +135,14 @@ public function rules()
 }
 ```
 
+#### Date format
+
+By default this rule will use `Y-m-d` as the date format, it can be overridden in the constructor.
+
+```php
+new FutureDate('Y-m-d H:i:s');
+```
+
 ### `pastDate`
 
 Determine if a date is in the past.
@@ -148,6 +156,14 @@ public function rules()
         'date_from' => ['date', new PastDate()],
     ];
 }
+```
+
+#### Date format
+
+By default this rule will use `Y-m-d` as the date format, it can be overridden in the constructor.
+
+```php
+new PastDate('Y-m-d H:i:s');
 ```
 
 ### `dateBetween`
@@ -180,6 +196,14 @@ If you only want to determine whether a date is between full days, you can use `
 ```php
 (new DateBetween(now()->subWeek(), now()->addWeek()))
     ->withoutTime()
+```
+
+#### Date format
+
+By default this rule will use `Y-m-d` as the date format, it can be overridden in the constructor.
+
+```php
+new DateBetween($from, $to, 'Y-m-d H:i:s');
 ```
 
 ### Testing

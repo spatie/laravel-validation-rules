@@ -2,14 +2,21 @@
 
 namespace Spatie\ValidationRules\Rules;
 
-use Carbon\Carbon;
 use Illuminate\Contracts\Validation\Rule;
+use Spatie\ValidationRules\IsDateRule;
 
 class FutureDate implements Rule
 {
+    use IsDateRule;
+
+    public function __construct(string $format = 'Y-m-d')
+    {
+        $this->format = $format;
+    }
+
     public function passes($attribute, $value): bool
     {
-        $date = Carbon::make($value);
+        $date = $this->createDate($value);
 
         return $date->isFuture();
     }
