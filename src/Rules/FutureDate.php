@@ -2,8 +2,8 @@
 
 namespace Spatie\ValidationRules\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use Spatie\ValidationRules\IsDateRule;
+use Illuminate\Contracts\Validation\Rule;
 
 class FutureDate implements Rule
 {

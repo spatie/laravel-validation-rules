@@ -3,9 +3,9 @@
 namespace Spatie\ValidationRules\Tests\Rules;
 
 use Carbon\Carbon;
-use Spatie\ValidationRules\Exceptions\InvalidDate;
 use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Rules\DateBetween;
+use Spatie\ValidationRules\Exceptions\InvalidDate;
 
 class DateBetweenTest extends TestCase
 {
