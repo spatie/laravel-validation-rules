@@ -2,7 +2,6 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
-use ReflectionClass;
 use Spatie\ValidationRules\Rules\Enum;
 use Spatie\ValidationRules\Tests\TestCase;
 
