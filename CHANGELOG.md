@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 1.0.3 - 2018-10-18
+
+- fix `Enum` rule
+
 ## 1.0.2 - 2018-10-14
 
 - fix typo in validation message

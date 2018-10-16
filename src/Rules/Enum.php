@@ -7,16 +7,16 @@ use Illuminate\Contracts\Validation\Rule;
 class Enum implements Rule
 {
     /** @var array */
-    protected $enumValues;
+    protected $validValues;
 
     public function __construct(string $enumClass)
     {
-        $this->enumValues = $enumClass::toArray();
+        $this->validValues = array_keys($enumClass::toArray());
     }
 
     public function passes($attribute, $value): bool
     {
-        return in_array($value, $this->enumValues);
+        return in_array($value, $this->validValues);
     }
 
     public function message(): string

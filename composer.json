@@ -20,6 +20,7 @@
         "illuminate/support": "^5.7"
     },
     "require-dev": {
+        "myclabs/php-enum": "^1.6",
         "orchestra/testbench": "^3.7",
         "phpunit/phpunit": "^7.4",
         "scrutinizer/ocular": "^1.5"

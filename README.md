@@ -83,7 +83,7 @@ public function rules()
 }
 ```
 
-The request will only be valid if `role` contains `admin` or `reviewer`.
+The request will only be valid if `role` contains `ADMIN` or `REVIEWER`.
 
 ### `modelsExist`
 

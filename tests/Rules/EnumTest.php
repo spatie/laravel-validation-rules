@@ -13,22 +13,15 @@ class EnumTest extends TestCase
     {
         $rule = new Enum(TestEnum::class);
 
-        $this->assertTrue($rule->passes('attribute', TestEnum::ONE));
+        $this->assertTrue($rule->passes('attribute', 'ONE'));
 
-        $this->assertFalse($rule->passes('attribute', 'four'));
+        $this->assertFalse($rule->passes('attribute', 'FOUR'));
     }
 }
 
-class TestEnum
+class TestEnum extends \MyCLabs\Enum\Enum
 {
     const ONE = 'one';
     const TWO = 'two';
     const THREE = 'three';
-
-    public static function toArray()
-    {
-        $reflection = new ReflectionClass(TestEnum::class);
-
-        return $reflection->getConstants();
-    }
 }
