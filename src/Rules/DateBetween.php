@@ -4,9 +4,12 @@ namespace Spatie\ValidationRules\Rules;
 
 use Carbon\Carbon;
 use Illuminate\Contracts\Validation\Rule;
+use Spatie\ValidationRules\IsDateRule;
 
 class DateBetween implements Rule
 {
+    use IsDateRule;
+
     /** @var \Carbon\Carbon */
     protected $start;
 
@@ -16,11 +19,13 @@ class DateBetween implements Rule
     /** @var bool */
     protected $orEquals = true;
 
-    public function __construct(Carbon $start, Carbon $end)
+    public function __construct(Carbon $start, Carbon $end, string $format = 'Y-m-d')
     {
         $this->start = $start->copy();
 
         $this->end = $end->copy();
+
+        $this->format = $format;
     }
 
     public function includeBoundaries(): DateBetween
@@ -48,7 +53,7 @@ class DateBetween implements Rule
 
     public function passes($attribute, $value): bool
     {
-        $date = Carbon::make($value);
+        $date = $this->createDate($value);
 
         return $date->between($this->start, $this->end, $this->orEquals);
     }
