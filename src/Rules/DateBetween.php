@@ -3,6 +3,7 @@
 namespace Spatie\ValidationRules\Rules;
 
 use Carbon\Carbon;
+use Spatie\ValidationRules\Exceptions\InvalidDate;
 use Spatie\ValidationRules\IsDateRule;
 use Illuminate\Contracts\Validation\Rule;
 
@@ -18,6 +19,9 @@ class DateBetween implements Rule
 
     /** @var bool */
     protected $orEquals = true;
+
+    /** @var string|null */
+    protected $message = null;
 
     public function __construct(Carbon $start, Carbon $end, string $format = 'Y-m-d')
     {
@@ -53,13 +57,19 @@ class DateBetween implements Rule
 
     public function passes($attribute, $value): bool
     {
-        $date = $this->createDate($value);
+        try {
+            $date = $this->createDate($value);
 
-        return $date->between($this->start, $this->end, $this->orEquals);
+            return $date->between($this->start, $this->end, $this->orEquals);
+        } catch (InvalidDate $exception) {
+            $this->message = $exception->getMessage();
+
+            return false;
+        }
     }
 
     public function message(): string
     {
-        return __('validationRules.date_between');
+        return $this->message ?? __('validationRules.date_between');
     }
 }

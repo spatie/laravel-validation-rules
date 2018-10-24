@@ -30,4 +30,12 @@ class FutureDateTest extends TestCase
 
         $this->assertFalse($rule->passes('attribute', '2017-01-01'));
     }
+
+    /** @test */
+    public function an_invalid_date_returns_false()
+    {
+        $rule = (new FutureDate('Y-m-d'));
+
+        $this->assertFalse($rule->passes('attribute', Carbon::make('2018-01-01 10:00:00')));
+    }
 }

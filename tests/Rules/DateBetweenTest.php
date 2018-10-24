@@ -74,7 +74,7 @@ class DateBetweenTest extends TestCase
     }
 
     /** @test */
-    public function it_throws_an_invalid_date_exception_on_invalid_format()
+    public function an_invalid_date_returns_false()
     {
         $rule = (new DateBetween(
             Carbon::make('2018-01-01 12:00:00'),
@@ -82,8 +82,6 @@ class DateBetweenTest extends TestCase
             'Y-m-d'
         ));
 
-        $this->expectException(InvalidDate::class);
-
-        $rule->passes('attribute', Carbon::make('2018-01-01'));
+        $this->assertFalse($rule->passes('attribute', '2018-01-01 10:00:00'));
     }
 }
