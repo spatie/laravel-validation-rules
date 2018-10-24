@@ -8,6 +8,6 @@ class InvalidDate extends Exception
 {
     public static function withFormat(string $format, string $value): InvalidDate
     {
-        return new self("Invalid date {$value} for format {$format}");
+        return new self(__("Invalid date {$value} for format {$format}"));
     }
 }
