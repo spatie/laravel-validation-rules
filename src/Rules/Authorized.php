@@ -35,6 +35,6 @@ class Authorized implements Rule
 
     public function message(): string
     {
-        return __('validationRules.authorized');
+        return __('validation.authorized');
     }
 }

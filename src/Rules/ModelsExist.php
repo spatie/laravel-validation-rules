@@ -32,6 +32,6 @@ class ModelsExist implements Rule
 
     public function message(): string
     {
-        return __('validationRules.model_ids');
+        return __('validation.model_ids');
     }
 }

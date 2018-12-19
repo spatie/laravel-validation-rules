@@ -21,6 +21,6 @@ class Enum implements Rule
 
     public function message(): string
     {
-        return __('validationRules.enum');
+        return __('validation.enum');
     }
 }
