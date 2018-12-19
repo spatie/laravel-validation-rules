@@ -3,6 +3,7 @@
 namespace Spatie\ValidationRules\Tests\Rules;
 
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Lang;
 use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Rules\ModelsExist;
 
@@ -35,5 +36,19 @@ class ModelsExistTest extends TestCase
         $this->assertFalse($rule->passes('userEmails', ['user@example.com']));
         factory(User::class)->create(['email' => 'user@example.com']);
         $this->assertTrue($rule->passes('userEmails', ['user@example.com']));
+    }
+
+    /** @test */
+    public function it_passes_relevant_data_to_the_validation_message()
+    {
+        Lang::addLines([
+            'validation.model_ids' => ':attribute :model :modelAttribute :modelIds',
+        ], Lang::getLocale());
+
+        $rule = new ModelsExist(User::class, 'id');
+
+        $rule->passes('userIds', [1, 2]);
+
+        $this->assertEquals('userIds User id 1, 2', $rule->message());
     }
 }

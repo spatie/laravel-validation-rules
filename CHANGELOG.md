@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 2.0.0 - 2018-12-19
+
+- move all validation message translations to the `validation.*` group to be more consistent with Laravel
+- add relevant data for each rule to validation message translations (see `message` method for each rule)
+
 ## 1.0.3 - 2018-10-18
 
 - fix `Enum` rule

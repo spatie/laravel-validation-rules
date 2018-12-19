@@ -13,6 +13,12 @@ class Authorized implements Rule
     /** @var array */
     protected $arguments;
 
+    /** @var string */
+    protected $className;
+
+    /** @var string */
+    protected $attribute;
+
     public function __construct(string $ability, string $className)
     {
         $this->ability = $ability;
@@ -22,6 +28,8 @@ class Authorized implements Rule
 
     public function passes($attribute, $value): bool
     {
+        $this->attribute = $attribute;
+
         if (! $user = Auth::user()) {
             return false;
         }
@@ -35,6 +43,12 @@ class Authorized implements Rule
 
     public function message(): string
     {
-        return __('validation.authorized');
+        $classBasename = class_basename($this->className);
+
+        return __('validation.authorized', [
+            'attribute' => $this->attribute,
+            'ability' => $this->ability,
+            'className' => $classBasename,
+        ]);
     }
 }

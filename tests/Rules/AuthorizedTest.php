@@ -4,6 +4,7 @@ namespace Spatie\ValidationRules\Tests\Rules;
 
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Lang;
 use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Rules\Authorized;
 use Spatie\ValidationRules\Tests\TestClasses\Models\TestModel;
@@ -74,5 +75,19 @@ class AuthorizedTest extends TestCase
         ]);
 
         $this->assertFalse($rule->passes('attribute', '1'));
+    }
+
+    /** @test */
+    public function it_passes_attribute_ability_and_class_name_to_the_validation_message()
+    {
+        Lang::addLines([
+            'validation.authorized' => ':attribute :ability and :className',
+        ], Lang::getLocale());
+
+        $rule = new Authorized('edit', TestModel::class);
+
+        $rule->passes('name_field', 'John Doe');
+
+        $this->assertEquals('name_field edit and TestModel', $rule->message());
     }
 }
