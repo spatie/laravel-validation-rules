@@ -17,7 +17,8 @@
     ],
     "require": {
         "php": "^7.1",
-        "illuminate/support": "^5.7"
+        "illuminate/support": "^5.7",
+        "league/iso3166": "^2.1"
     },
     "require-dev": {
         "myclabs/php-enum": "^1.6",

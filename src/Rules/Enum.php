@@ -27,6 +27,7 @@ class Enum implements Rule
     public function message(): string
     {
         $validValues = implode(', ', $this->validValues);
+
         return __('validation.enum', [
             'attribute' => $this->attribute,
             'validValues' => $validValues,

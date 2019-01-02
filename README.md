@@ -25,7 +25,7 @@ The package will automatically register itself.
 - [`enum`](#enum)
 - [`modelsExist`](#modelids)
 
-### `authorized`
+### `Authorized`
 
 Determine if the user is authorized to perform an ability on an instance of the given model. The id of the model is the field under validation 
 
@@ -56,7 +56,35 @@ public function rules()
 }
 ```
 
-### `enum`
+### `CountryCode`
+
+Determine if the field under validation is a valid ISO3166 country code.
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'country' => ['required', new Country()],
+    ];
+}
+```
+
+If you want to validate a nullable country code field, you can call the `nullable()` method on the `CountryCode` rule. This way `null` and `0` are also passing values:
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'country' => [(new Country())->nullable()],
+    ];
+}
+```
+
+### `Enum`
 
 This rule will validate if the value under validation is part of the given enum class. We assume that the enum class has a static `toArray` method that returns all valid values. If you're looking for a good enum class, take a look at [myclabs/php-enum](https://github.com/myclabs/php-enum);
 
@@ -85,7 +113,7 @@ public function rules()
 
 The request will only be valid if `role` contains `ADMIN` or `REVIEWER`.
 
-### `modelsExist`
+### `ModelsExist`
 
 Determine if all of the values in the input array exist as attributes for the given model class. 
 

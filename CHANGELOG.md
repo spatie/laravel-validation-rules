@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 2.1.0 - 2019-01-02
+
+- add `CountryCode` rule for ISO3266 country codes
+
 ## 2.0.0 - 2018-12-19
 
 - move all validation message translations to the `validation.*` group to be more consistent with Laravel
