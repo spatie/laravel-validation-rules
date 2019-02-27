@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 abstract class TestCase extends Orchestra
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

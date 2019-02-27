@@ -12,7 +12,7 @@ use Spatie\ValidationRules\Tests\TestClasses\Policies\TestModelPolicy;
 
 class AuthorizedTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
