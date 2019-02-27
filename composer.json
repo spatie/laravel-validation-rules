@@ -16,14 +16,14 @@
         }
     ],
     "require": {
-        "php": "^7.1",
+        "php": "^7.2",
         "illuminate/support": "^5.7",
         "league/iso3166": "^2.1"
     },
     "require-dev": {
         "myclabs/php-enum": "^1.6",
         "orchestra/testbench": "^3.7",
-        "phpunit/phpunit": "^7.4",
+        "phpunit/phpunit": "^8.0",
         "scrutinizer/ocular": "^1.5"
     },
     "autoload": {

@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 2.1.1 - 2019-02-27
+
+- use PHPUnit 8 to run tests
+
 ## 2.1.0 - 2019-01-02
 
 - add `CountryCode` rule for ISO3266 country codes
