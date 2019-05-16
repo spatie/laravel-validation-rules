@@ -2,9 +2,9 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
-## 2.2.0 - 2019-05-16
+## 2.3.0 - 2019-05-16
 
-- added `CommaSeparatedEmails`
+- added `Delimited`
 
 ## 2.1.1 - 2019-02-27
 
