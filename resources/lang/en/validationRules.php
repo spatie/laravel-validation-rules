@@ -5,8 +5,9 @@ return [
     'enum' => 'This is not a valid value.',
     'model_ids' => 'Some of the given ids do not exist.',
     'country_code' => 'Invalid country code.',
-    'invalid_emails' => ':attribute are not valid e-mail addresses.',
-    'minimum_emails' => 'You must at least specify :actualCount :emailword',
-    'minimum_emails' => 'You can specify at most :actualCount :emailword',
-    'unique_emails' => 'You must specify unique e-mail addresses'
+    'delimited' => [
+        'unique' => 'You may not specify duplicates.',
+        'min' => 'You must specify at least :min :item',
+        'max' => 'You can only specify :max :item'
+    ]
 ];
