@@ -148,9 +148,9 @@ public function rules()
 
 ### `Delimited`
 
-This rule can validate a string of with delimited values. It's constructor accepts a rule that is used to validate all separate values.
+This rule can validate a string containing delimited values. The constructor accepts a rule that is used to validate all separate values.
 
-Here's a an example where we are going to validate a string with comma separated email addresses.
+Here's an example where we are going to validate a string containing comma separated email addresses.
 
 ```php
 // in a `FormRequest`
