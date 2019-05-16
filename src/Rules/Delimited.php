@@ -11,13 +11,10 @@ class Delimited implements Rule
     /** @var string|array|\Illuminate\Contracts\Validation\Rule */
     protected $rule;
 
-    /** @var int|null */
-    protected $minimum;
+    protected $minimum = null;
 
-    /** @var int|null */
-    protected $maximum;
+    protected $maximum = null;
 
-    /** @var bool */
     protected $allowDuplicates = false;
 
     protected $message = '';
