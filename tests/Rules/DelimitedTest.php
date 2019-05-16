@@ -36,6 +36,11 @@ class DelimitedTest extends TestCase
     /** @test */
     public function it_can_validate_a_minimum_of_valid_addresses()
     {
+        $this->rule->min(1);
+        $this->assertRuleFails('');
+        $this->assertRuleFails('  ');
+        $this->assertRulePasses('sebastian@example.com');
+
         $this->rule->min(2);
         $this->assertRuleFails('');
         $this->assertRuleFails('sebastian@example.com');

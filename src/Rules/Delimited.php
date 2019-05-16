@@ -76,7 +76,11 @@ class Delimited implements Rule
 
     public function passes($attribute, $value)
     {
-        $items = collect(explode($this->separatedBy, $value));
+        if ($this->trimItems) {
+            $value = trim($value);
+        }
+
+        $items = collect(explode($this->separatedBy, $value))->filter();
 
         if (! is_null($this->minimum)) {
             if ($items->count() < $this->minimum) {
