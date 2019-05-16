@@ -21,9 +21,9 @@ The package will automatically register itself.
 
 ## Available rules
 
-- [`authorized`](#authorized)
-- [`enum`](#enum)
-- [`modelsExist`](#modelids)
+- [`Authorized`](#authorized)
+- [`Enum`](#enum)
+- [`ModelsExist`](#modelids)
 - [`CommaSeparatedEmails`](#commaseparatedemails)
 
 ### `Authorized`
