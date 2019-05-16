@@ -164,7 +164,7 @@ public function rules()
 ```
 
 Here's some example input that passes this rule:
--
+
 - `'sebastian@example.com, alex@example.com'`
 - `''`
 - `'sebastian@example.com'`
