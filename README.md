@@ -230,7 +230,7 @@ Now this will pass: `1,1,2,2,3,3`
 
 #### Composite rules
 
-The constructor of the validator accepts a validation rule string, a validate instance or an array.
+The constructor of the validator accepts a validation rule string, a validate instance, or an array.
 
 ```php
 new Delimited('email|max:20')
