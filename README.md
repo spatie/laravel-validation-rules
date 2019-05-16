@@ -148,9 +148,9 @@ public function rules()
 
 ### `Delimited`
 
-This rules can validate a string of with delimted values.
- 
- You can also specify a minimum and/or a maximum of e-mail addresses
+This rule can validate a string of with delimited values. It's constructor accepts a rule that is used to validate all separate values.
+
+Here's a an example where we are going to validate a string with comma separated email addresses.
 
 ```php
 // in a `FormRequest`
@@ -158,10 +158,86 @@ This rules can validate a string of with delimted values.
 public function rules()
 {
     return [
-        'emails' => [(new CommaSeparatedEmails())->min(2)->max(5)],
+        'emails' => [(new Delimited('email'))],
     ];
 }
 ```
+
+Here's some example input that passes this rule:
+-
+- `'sebastian@example.com, alex@example.com'`
+- `''`
+- `'sebastian@example.com'`
+- `'sebastian@example.com, alex@example.com, brent@example.com'`
+- `' sebastian@example.com   , alex@example.com  ,   brent@example.com  '`
+
+This input will not pass:
+- `'@example.com'`
+- `'nocomma@example.com nocommatoo@example.com'`
+- `'valid@example.com, invalid@'`
+
+
+#### Setting a minimum
+You can set minimum amout of items that should be present:
+
+```php
+(new Delimited('email'))->min(2)
+```
+
+- `'sebastian@example.com, alex@example.com'` // passes
+- `'sebastian@example.com'` // fails
+
+#### Setting a maximum
+
+```php
+(new Delimited('email'))->max(2)
+```
+
+- `'sebastian@example.com'` // passes
+- `'sebastian@example.com, alex@example.com, brent@example.com'` // fails
+
+#### Allowing duplicate items
+
+By default the rule will fail if there are duplicate items found.
+
+- `'sebastian@example.com, sebastian@example.com'` // fails
+
+You can allowing duplicate itmes like this:
+
+```php
+(new Delimited('numeric'))->allowDuplicates()
+```
+
+Now this will pass: `1,1,2,2,3,3`
+
+#### Customizing the separator
+
+```php
+(new Delimited('email'))->separatedBy(';')
+```
+
+- `'sebastian@example.com; alex@example.com; brent@example.com'` // passes
+- `'sebastian@example.com, alex@example.com, brent@example.com'` // fails
+
+#### Skip trimming of itmes
+
+```php
+(new Delimited('email'))->doNotTrimItems()
+```
+
+- `'sebastian@example.com,freek@example.com'` // passes
+- `'sebastian@example.com,freek@example.com'` // fails
+
+#### Composite rules
+
+The constructor of the validator accepts a validation rule string, a validate instance or an array.
+
+```php
+new Delimited('email|max:20')
+```
+- `'short@example.com'` // passes
+- `'invalid'` // fails
+- `'loooooooonnnggg@example.com'` // fails
 
 ### Testing
 
