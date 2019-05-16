@@ -158,7 +158,7 @@ Here's an example where we are going to validate a string containing comma separ
 public function rules()
 {
     return [
-        'emails' => [(new Delimited('email'))],
+        'emails' => [new Delimited('email')],
     ];
 }
 ```
