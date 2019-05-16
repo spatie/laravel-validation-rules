@@ -24,7 +24,7 @@ The package will automatically register itself.
 - [`Authorized`](#authorized)
 - [`Enum`](#enum)
 - [`ModelsExist`](#modelids)
-- [`CommaSeparatedEmails`](#commaseparatedemails)
+- [`Delimited`](#delimited)
 
 ### `Authorized`
 
