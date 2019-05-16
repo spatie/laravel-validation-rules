@@ -2,9 +2,9 @@
 
 namespace Spatie\ValidationRules\Rules;
 
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class CommaSeparatedEmails implements Rule
 {
@@ -40,17 +40,16 @@ class CommaSeparatedEmails implements Rule
 
         if ($validEmails->unique()->count() !== $validEmails->count()) {
             $this->message = __('validation.unique_emails');
+
             return false;
         }
-
-
 
         if (! is_null($this->minimum)) {
             if ($validEmails->count() < $this->minimum) {
                 $this->message = __('validation.minimum_emails', [
                     'actualCount' => $invalidEmails->implode(','),
                     'expectedMinimum' => $this->minimum,
-                    'emailword' => Str::plural('e-mail address', $this->minimum)
+                    'emailword' => Str::plural('e-mail address', $this->minimum),
                 ]);
 
                 return false;
@@ -62,7 +61,7 @@ class CommaSeparatedEmails implements Rule
                 $this->message = __('validation.maximum_emails', [
                     'actualCount' => $invalidEmails->implode(','),
                     'expectedMaximum' => $this->maximum,
-                    'emailword' => Str::plural('e-mail address', $this->maximum)
+                    'emailword' => Str::plural('e-mail address', $this->maximum),
                 ]);
 
                 return false;
@@ -96,4 +95,3 @@ class CommaSeparatedEmails implements Rule
         return Validator::make(['email' => $email], ['email' => 'email'])->passes();
     }
 }
-

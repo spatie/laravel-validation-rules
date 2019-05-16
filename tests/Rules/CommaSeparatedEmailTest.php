@@ -2,8 +2,8 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
-use Spatie\ValidationRules\Rules\CommaSeparatedEmails;
 use Spatie\ValidationRules\Tests\TestCase;
+use Spatie\ValidationRules\Rules\CommaSeparatedEmails;
 
 class CommaSeparatedEmailTest extends TestCase
 {
@@ -72,4 +72,3 @@ class CommaSeparatedEmailTest extends TestCase
         return $this->rule->passes('attribute', $value);
     }
 }
-
