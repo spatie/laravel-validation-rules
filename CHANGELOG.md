@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 2.3.1 - 2019-05-16
+
+- fix for validating arrays
+
 ## 2.3.0 - 2019-05-16
 
 - added `Delimited`

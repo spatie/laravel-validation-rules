@@ -136,6 +136,8 @@ class Delimited implements Rule
 
     protected function validate(string $attribute, string $item): array
     {
+        $attribute = Str::after($attribute, '.');
+
         $validator = Validator::make([$attribute => $item], [$attribute => $this->rule]);
 
         return [
