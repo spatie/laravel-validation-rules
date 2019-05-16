@@ -2,9 +2,13 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
+<<<<<<< HEAD:tests/Rules/DelimitedTest.php
 use Spatie\ValidationRules\Rules\Delimited;
 use Spatie\ValidationRules\Rules\CountryCode;
+=======
+>>>>>>> f9215139628087c46928ba46011cbc2dbb2be6c3:tests/Rules/CommaSeparatedEmailTest.php
 use Spatie\ValidationRules\Tests\TestCase;
+use Spatie\ValidationRules\Rules\CommaSeparatedEmails;
 
 class DelimitedTest extends TestCase
 {
@@ -121,4 +125,3 @@ class DelimitedTest extends TestCase
         return $this->rule->passes('attribute', $value);
     }
 }
-

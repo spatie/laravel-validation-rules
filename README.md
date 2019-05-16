@@ -21,9 +21,9 @@ The package will automatically register itself.
 
 ## Available rules
 
-- [`authorized`](#authorized)
-- [`enum`](#enum)
-- [`modelsExist`](#modelids)
+- [`Authorized`](#authorized)
+- [`Enum`](#enum)
+- [`ModelsExist`](#modelids)
 - [`CommaSeparatedEmails`](#commaseparatedemails)
 
 ### `Authorized`
@@ -146,7 +146,7 @@ public function rules()
 }
 ```
 
-### CommaSeparatedEmails 
+### `CommaSeparatedEmails`
 
 This rules can validate a string of comma separated emailaddresses. It will also fail when duplicate emails are found in the string.
  
@@ -158,7 +158,7 @@ This rules can validate a string of comma separated emailaddresses. It will also
 public function rules()
 {
     return [
-        'emails' => [new CommaSeparatedEmails()->min(2)->max(5)],
+        'emails' => [(new CommaSeparatedEmails())->min(2)->max(5)],
     ];
 }
 ```
