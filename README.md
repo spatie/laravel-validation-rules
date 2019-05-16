@@ -202,7 +202,7 @@ By default the rule will fail if there are duplicate items found.
 
 - `'sebastian@example.com, sebastian@example.com'` // fails
 
-You can allowing duplicate itmes like this:
+You can allowing duplicate items like this:
 
 ```php
 (new Delimited('numeric'))->allowDuplicates()
@@ -219,7 +219,7 @@ Now this will pass: `1,1,2,2,3,3`
 - `'sebastian@example.com; alex@example.com; brent@example.com'` // passes
 - `'sebastian@example.com, alex@example.com, brent@example.com'` // fails
 
-#### Skip trimming of itmes
+#### Skip trimming of items
 
 ```php
 (new Delimited('email'))->doNotTrimItems()
