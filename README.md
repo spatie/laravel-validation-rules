@@ -158,7 +158,7 @@ This rules can validate a string of comma separated emailaddresses. It will also
 public function rules()
 {
     return [
-        'emails' => [new CommaSeparatedEmails()->min(2)->max(5)],
+        'emails' => [(new CommaSeparatedEmails())->min(2)->max(5)],
     ];
 }
 ```
