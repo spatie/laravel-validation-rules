@@ -146,9 +146,9 @@ public function rules()
 }
 ```
 
-### `CommaSeparatedEmails`
+### `Delimited`
 
-This rules can validate a string of comma separated emailaddresses. It will also fail when duplicate emails are found in the string.
+This rules can validate a string of with delimted values.
  
  You can also specify a minimum and/or a maximum of e-mail addresses
 

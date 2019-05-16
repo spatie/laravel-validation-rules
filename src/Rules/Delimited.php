@@ -103,7 +103,7 @@ class Delimited implements Rule
         }
 
         if ($this->trimItems) {
-            $items = $items->map(function ($item) {
+            $items = $items->map(function (string $item) {
                 return trim($item);
             });
         }
@@ -133,7 +133,7 @@ class Delimited implements Rule
         return $this->message;
     }
 
-    protected function validate($attribute, $item): array
+    protected function validate(string $attribute, string $item): array
     {
         $validator = Validator::make([$attribute => $item], [$attribute => $this->rule]);
 

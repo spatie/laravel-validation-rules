@@ -22,17 +22,17 @@ class DelimitedTest extends TestCase
     /** @test */
     public function it_can_validate_comma_separated_email_addresses()
     {
-        $this->assertRulePasses('sebastian@spatie.be, alex@spatie.be');
+        $this->assertRulePasses('sebastian@example.com, alex@example.com');
         $this->assertRulePasses('');
-        $this->assertRulePasses('sebastian@spatie.be');
-        $this->assertRulePasses('sebastian@spatie.be, alex@spatie.be, brent@spatie.be');
-        $this->assertRulePasses(' sebastian@spatie.be   , alex@spatie.be  ,   brent@spatie.be  ');
+        $this->assertRulePasses('sebastian@example.com');
+        $this->assertRulePasses('sebastian@example.com, alex@example.com, brent@example.com');
+        $this->assertRulePasses(' sebastian@example.com   , alex@example.com  ,   brent@example.com  ');
 
 
         $this->assertRuleFails('invalid@');
-        $this->assertRuleFails('nocomma@spatie.be nocommatoo@spatie.be');
+        $this->assertRuleFails('nocomma@example.com nocommatoo@example.com');
 
-        $this->assertRuleFails('valid@spatie.be, invalid@');
+        $this->assertRuleFails('valid@example.com, invalid@');
     }
 
     /** @test */
@@ -40,9 +40,9 @@ class DelimitedTest extends TestCase
     {
         $this->rule->min(2);
         $this->assertRuleFails('');
-        $this->assertRuleFails('sebastian@spatie.be');
-        $this->assertRulePasses('sebastian@spatie.be, alex@spatie.be');
-        $this->assertRulePasses('sebastian@spatie.be, alex@spatie.be, brent@spatie.be');
+        $this->assertRuleFails('sebastian@example.com');
+        $this->assertRulePasses('sebastian@example.com, alex@example.com');
+        $this->assertRulePasses('sebastian@example.com, alex@example.com, brent@example.com');
     }
 
     /** @test */
@@ -50,15 +50,15 @@ class DelimitedTest extends TestCase
     {
         $this->rule->max(2);
         $this->assertRulePasses('');
-        $this->assertRulePasses('sebastian@spatie.be');
-        $this->assertRulePasses('sebastian@spatie.be, alex@spatie.be');
-        $this->assertRuleFails('sebastian@spatie.be, alex@spatie.be, brent@spatie.be');
+        $this->assertRulePasses('sebastian@example.com');
+        $this->assertRulePasses('sebastian@example.com, alex@example.com');
+        $this->assertRuleFails('sebastian@example.com, alex@example.com, brent@example.com');
     }
 
     /** @test */
     public function it_will_fail_if_not_all_email_addresses_are_unique()
     {
-        $this->assertRuleFails('sebastian@spatie.be, sebastian@spatie.be');
+        $this->assertRuleFails('sebastian@example.com, sebastian@example.com');
     }
 
     /** @test */
@@ -66,7 +66,7 @@ class DelimitedTest extends TestCase
     {
         $this->rule->allowDuplicates();
 
-        $this->assertRulePasses('sebastian@spatie.be, sebastian@spatie.be');
+        $this->assertRulePasses('sebastian@example.com, sebastian@example.com');
     }
 
     /** @test */
@@ -74,8 +74,8 @@ class DelimitedTest extends TestCase
     {
         $this->rule->separatedBy(';');
 
-        $this->assertRulePasses('sebastian@spatie.be; freek@spatie.be');
-        $this->assertRuleFails('sebastian@spatie.be, freek@spatie.be');
+        $this->assertRulePasses('sebastian@example.com; freek@example.com');
+        $this->assertRuleFails('sebastian@example.com, freek@example.com');
     }
 
     /** @test */
@@ -83,9 +83,9 @@ class DelimitedTest extends TestCase
     {
         $this->rule->doNotTrimItems();
 
-        $this->assertRulePasses('sebastian@spatie.be,freek@spatie.be');
-        $this->assertRuleFails('sebastian@spatie.be, freek@spatie.be');
-        $this->assertRuleFails('sebastian@spatie.be , freek@spatie.be');
+        $this->assertRulePasses('sebastian@example.com,freek@example.com');
+        $this->assertRuleFails('sebastian@example.com, freek@example.com');
+        $this->assertRuleFails('sebastian@example.com , freek@example.com');
 
     }
 
@@ -94,8 +94,18 @@ class DelimitedTest extends TestCase
     {
         $rule = new Delimited(['email']);
 
-        $this->assertTrue($rule->passes('attribute', 'sebastian@spatie.be, alex@spatie.be, brent@spatie.be'));
+        $this->assertTrue($rule->passes('attribute', 'sebastian@example.com, alex@example.com, brent@example.com'));
         $this->assertFalse($rule->passes('attribute', 'blablabla'));
+    }
+
+    /** @test */
+    public function it_can_use_composite_rules()
+    {
+        $rule = new Delimited('email|max:20');
+
+        $this->assertTrue($rule->passes('attribute', 'short@example.com'));
+        $this->assertFalse($rule->passes('attribute', 'short'));
+        $this->assertFalse($rule->passes('attribute', 'loooooooonnnggg@example.com'));
     }
 
     /** @test */
