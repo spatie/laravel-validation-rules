@@ -226,7 +226,8 @@ Now this will pass: `1,1,2,2,3,3`
 ```
 
 - `'sebastian@example.com,freek@example.com'` // passes
-- `'sebastian@example.com,freek@example.com'` // fails
+- `'sebastian@example.com, freek@example.com'` // fails
+- `'sebastian@example.com , freek@example.com'` // fails
 
 #### Composite rules
 
