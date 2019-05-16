@@ -24,6 +24,7 @@ The package will automatically register itself.
 - [`authorized`](#authorized)
 - [`enum`](#enum)
 - [`modelsExist`](#modelids)
+- [`CommaSeparatedEmails`](#commaseparatedemails)
 
 ### `Authorized`
 
@@ -141,6 +142,23 @@ public function rules()
 {
     return [
         'user_emails' => ['array', new ModelsExist(User::class, 'emails')],
+    ];
+}
+```
+
+### CommaSeparatedEmails 
+
+This rules can validate a string of comma separated emailaddresses. It will also fail when duplicate emails are found in the string.
+ 
+ You can also specify a minimum and/or a maximum of e-mail addresses
+
+```php
+// in a `FormRequest`
+
+public function rules()
+{
+    return [
+        'emails' => [new CommaSeparatedEmails()->min(2)->max(5)],
     ];
 }
 ```
