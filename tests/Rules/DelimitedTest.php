@@ -2,10 +2,9 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
+use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Rules\Delimited;
 use Spatie\ValidationRules\Rules\CountryCode;
-use Spatie\ValidationRules\Tests\TestCase;
-use Spatie\ValidationRules\Rules\CommaSeparatedEmails;
 
 class DelimitedTest extends TestCase
 {
@@ -27,7 +26,6 @@ class DelimitedTest extends TestCase
         $this->assertRulePasses('sebastian@example.com');
         $this->assertRulePasses('sebastian@example.com, alex@example.com, brent@example.com');
         $this->assertRulePasses(' sebastian@example.com   , alex@example.com  ,   brent@example.com  ');
-
 
         $this->assertRuleFails('invalid@');
         $this->assertRuleFails('nocomma@example.com nocommatoo@example.com');
@@ -86,7 +84,6 @@ class DelimitedTest extends TestCase
         $this->assertRulePasses('sebastian@example.com,freek@example.com');
         $this->assertRuleFails('sebastian@example.com, freek@example.com');
         $this->assertRuleFails('sebastian@example.com , freek@example.com');
-
     }
 
     /** @test */

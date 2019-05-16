@@ -2,9 +2,9 @@
 
 namespace Spatie\ValidationRules\Rules;
 
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class Delimited implements Rule
 {
@@ -78,24 +78,24 @@ class Delimited implements Rule
     {
         $items = collect(explode($this->separatedBy, $value));
 
-        if (!is_null($this->minimum)) {
+        if (! is_null($this->minimum)) {
             if ($items->count() < $this->minimum) {
                 $this->message = __('validation.delimited.min', [
                     'minimum' => $this->minimum,
                     'actual' => $items->count(),
-                    'item' => Str::plural($this->validationMessageWord, $items->count())
+                    'item' => Str::plural($this->validationMessageWord, $items->count()),
                 ]);
 
                 return false;
             }
         }
 
-        if (!is_null($this->maximum)) {
+        if (! is_null($this->maximum)) {
             if ($items->count() > $this->maximum) {
                 $this->message = __('validation.delimited.max', [
                     'maximum' => $this->maximum,
                     'actual' => $items->count(),
-                    'item' => Str::plural($this->validationMessageWord, $items->count())
+                    'item' => Str::plural($this->validationMessageWord, $items->count()),
                 ]);
 
                 return false;
@@ -118,9 +118,10 @@ class Delimited implements Rule
             }
         }
 
-        if (!$this->allowDuplicates) {
+        if (! $this->allowDuplicates) {
             if ($items->unique()->count() !== $items->count()) {
                 $this->message = __('validation.delimited.unique');
+
                 return false;
             }
         }
@@ -143,4 +144,3 @@ class Delimited implements Rule
         ];
     }
 }
-

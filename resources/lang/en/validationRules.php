@@ -8,6 +8,6 @@ return [
     'delimited' => [
         'unique' => 'You may not specify duplicates.',
         'min' => 'You must specify at least :min :item',
-        'max' => 'You can only specify :max :item'
-    ]
+        'max' => 'You can only specify :max :item',
+    ],
 ];
