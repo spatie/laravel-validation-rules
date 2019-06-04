@@ -42,7 +42,7 @@ class ModelsExistTest extends TestCase
     public function it_passes_relevant_data_to_the_validation_message()
     {
         Lang::addLines([
-            'validation.model_ids' => ':attribute :model :modelAttribute :modelIds',
+            'validationRules::messages.model_ids' => ':attribute :model :modelAttribute :modelIds',
         ], Lang::getLocale());
 
         $rule = new ModelsExist(User::class, 'id');

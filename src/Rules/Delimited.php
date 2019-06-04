@@ -84,7 +84,7 @@ class Delimited implements Rule
 
         if (! is_null($this->minimum)) {
             if ($items->count() < $this->minimum) {
-                $this->message = __('validation.delimited.min', [
+                $this->message = __('validationRules::messages.delimited.min', [
                     'minimum' => $this->minimum,
                     'actual' => $items->count(),
                     'item' => Str::plural($this->validationMessageWord, $items->count()),
@@ -96,7 +96,7 @@ class Delimited implements Rule
 
         if (! is_null($this->maximum)) {
             if ($items->count() > $this->maximum) {
-                $this->message = __('validation.delimited.max', [
+                $this->message = __('validationRules::messages.delimited.max', [
                     'maximum' => $this->maximum,
                     'actual' => $items->count(),
                     'item' => Str::plural($this->validationMessageWord, $items->count()),
@@ -124,7 +124,7 @@ class Delimited implements Rule
 
         if (! $this->allowDuplicates) {
             if ($items->unique()->count() !== $items->count()) {
-                $this->message = __('validation.delimited.unique');
+                $this->message = __('validationRules::messages.delimited.unique');
 
                 return false;
             }

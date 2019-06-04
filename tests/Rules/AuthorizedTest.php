@@ -81,7 +81,7 @@ class AuthorizedTest extends TestCase
     public function it_passes_attribute_ability_and_class_name_to_the_validation_message()
     {
         Lang::addLines([
-            'validation.authorized' => ':attribute :ability and :className',
+            'validationRules::messages.authorized' => ':attribute :ability and :className',
         ], Lang::getLocale());
 
         $rule = new Authorized('edit', TestModel::class);

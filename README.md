@@ -18,6 +18,13 @@ composer require spatie/laravel-validation-rules
 
 The package will automatically register itself.
 
+### Translations
+
+If you wish to edit the package translations, you can run the following command to publish them into your `resources/lang` folder
+
+```bash
+php artisan vendor:publish --provider="Spatie\ValidationRules\ValidationRulesServiceProvider"
+```
 
 ## Available rules
 

@@ -22,7 +22,7 @@ class EnumTest extends TestCase
     public function it_passes_attribute_and_valid_values_to_the_validation_message()
     {
         Lang::addLines([
-            'validation.enum' => ':attribute :validValues',
+            'validationRules::messages.enum' => ':attribute :validValues',
         ], Lang::getLocale());
 
         $rule = new Enum(TestEnum::class);

@@ -45,7 +45,7 @@ class Authorized implements Rule
     {
         $classBasename = class_basename($this->className);
 
-        return __('validation.authorized', [
+        return __('validationRules::messages.authorized', [
             'attribute' => $this->attribute,
             'ability' => $this->ability,
             'className' => $classBasename,
