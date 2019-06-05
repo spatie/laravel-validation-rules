@@ -22,8 +22,9 @@ The package will automatically register itself.
 ## Available rules
 
 - [`Authorized`](#authorized)
+- [`CountryCode`](#countrycode)
 - [`Enum`](#enum)
-- [`ModelsExist`](#modelids)
+- [`ModelsExist`](#modelsexist)
 - [`Delimited`](#delimited)
 
 ### `Authorized`
