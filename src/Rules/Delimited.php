@@ -82,7 +82,7 @@ class Delimited implements Rule
 
         $items = collect(explode($this->separatedBy, $value))
             ->filter(function ($item) {
-                return strlen((string)$item) > 0;
+                return strlen((string) $item) > 0;
             });
 
         if (! is_null($this->minimum)) {
