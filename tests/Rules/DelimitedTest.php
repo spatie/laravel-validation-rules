@@ -44,6 +44,7 @@ class DelimitedTest extends TestCase
         $this->rule->min(2);
         $this->assertRuleFails('');
         $this->assertRuleFails('sebastian@example.com');
+        $this->assertRulePasses('0, 1');
         $this->assertRulePasses('sebastian@example.com, alex@example.com');
         $this->assertRulePasses('sebastian@example.com, alex@example.com, brent@example.com');
     }
