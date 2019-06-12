@@ -119,7 +119,7 @@ class DelimitedTest extends TestCase
         $this->assertFalse($rule->passes('attribute', 'BE, NL, blablabla'));
 
         $rule = new Delimited('numeric');
-        $this->assertTrue($rule->passes('attribute', '0, 1'));
+        $this->assertTrue($rule->min(2)->passes('attribute', '0, 1'));
     }
 
     protected function assertRulePasses(string $value)
