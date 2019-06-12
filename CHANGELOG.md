@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 2.3.3 - 2019-06-12
+
+- fix for determining the amount of value in the `Delimited` rule
+
 ## 2.3.2 - 2019-05-15
 
 - fix for delimiting rule with a minimum of 1
