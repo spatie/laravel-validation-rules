@@ -44,7 +44,7 @@ class ModelsExist implements Rule
 
         $classBasename = class_basename($this->modelClassName);
 
-        return __('validation.model_ids', [
+        return __('validationRules::messages.model_ids', [
             'attribute' => $this->attribute,
             'model' => $classBasename,
             'modelAttribute' => $this->modelAttribute,

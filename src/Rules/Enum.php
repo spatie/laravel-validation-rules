@@ -28,7 +28,7 @@ class Enum implements Rule
     {
         $validValues = implode(', ', $this->validValues);
 
-        return __('validation.enum', [
+        return __('validationRules::messages.enum', [
             'attribute' => $this->attribute,
             'validValues' => $validValues,
         ]);

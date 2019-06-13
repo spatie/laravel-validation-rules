@@ -40,7 +40,7 @@ class CountryCode implements Rule
 
     public function message(): string
     {
-        return __('validation.country_code', [
+        return __('validationRules::messages.country_code', [
             'attribute' => $this->attribute,
         ]);
     }

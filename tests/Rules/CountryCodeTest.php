@@ -44,8 +44,8 @@ class CountryCodeTest extends TestCase
     public function it_passes_the_attribute_name_to_the_validation_message()
     {
         Lang::addLines([
-            'validation.country_code' => ':attribute',
-        ], Lang::getLocale());
+            'messages.country_code' => ':attribute',
+        ], Lang::getLocale(), 'validationRules');
 
         $rule = new CountryCode();
 
