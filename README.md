@@ -68,7 +68,7 @@ Determine if the field under validation is a valid ISO3166 country code.
 public function rules()
 {
     return [
-        'country' => ['required', new Country()],
+        'country_code' => ['required', new CountryCode()],
     ];
 }
 ```
@@ -81,7 +81,7 @@ If you want to validate a nullable country code field, you can call the `nullabl
 public function rules()
 {
     return [
-        'country' => [(new Country())->nullable()],
+        'country_code' => [(new CountryCode())->nullable()],
     ];
 }
 ```
