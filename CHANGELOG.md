@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 2.3.4 - 2019-06-14
+
+- fix validation messages
+
 ## 2.3.3 - 2019-06-12
 
 - fix for determining the amount of value in the `Delimited` rule
