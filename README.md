@@ -95,7 +95,7 @@ public function rules()
 
 ### `Enum`
 
-This rule will validate if the value under validation is part of the given enum class. We assume that the enum class has a static `toArray` method that returns all valid values. If you're looking for a good enum class, take a look at [spatie/enum](https://github.com/spatie/enum).
+This rule will validate if the value under validation is part of the given enum class. We assume that the enum class has a static `toArray` method that returns all valid values. If you're looking for a good enum class, take a look at [spatie/enum](https://github.com/spatie/enum) or [myclabs/php-enum](https://github.com/myclabs/php-enum).
 
 Consider the following enum class:
 
