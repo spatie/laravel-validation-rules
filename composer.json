@@ -27,6 +27,10 @@
         "scrutinizer/ocular": "^1.5",
         "spatie/enum": "^2.2"
     },
+    "suggest": {
+        "spatie/enum": "Allows to use the enum validator",
+        "myclabs/php-enum": "Allows to use the enum validator"
+    },
     "autoload": {
         "psr-4": {
             "Spatie\\ValidationRules\\": "src"
