@@ -24,7 +24,8 @@
         "myclabs/php-enum": "^1.6",
         "orchestra/testbench": "^3.7",
         "phpunit/phpunit": "^8.0",
-        "scrutinizer/ocular": "^1.5"
+        "scrutinizer/ocular": "^1.5",
+        "spatie/enum": "^2.2"
     },
     "autoload": {
         "psr-4": {
