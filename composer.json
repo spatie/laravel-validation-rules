@@ -17,12 +17,12 @@
     ],
     "require": {
         "php": "^7.2",
-        "illuminate/support": "^5.7",
+        "illuminate/support": "^6.0",
         "league/iso3166": "^2.1"
     },
     "require-dev": {
         "myclabs/php-enum": "^1.6",
-        "orchestra/testbench": "^3.7",
+        "orchestra/testbench": "^4.0",
         "phpunit/phpunit": "^8.0",
         "scrutinizer/ocular": "^1.5",
         "spatie/enum": "^2.2"
@@ -51,5 +51,7 @@
                 "Spatie\\ValidationRules\\ValidationRulesServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
