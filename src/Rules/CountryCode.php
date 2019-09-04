@@ -2,6 +2,7 @@
 
 namespace Spatie\ValidationRules\Rules;
 
+use Illuminate\Support\Arr;
 use League\ISO3166\ISO3166;
 use Illuminate\Contracts\Validation\Rule;
 
@@ -33,7 +34,7 @@ class CountryCode implements Rule
             return true;
         }
 
-        $countries = array_pluck((new ISO3166())->all(), ISO3166::KEY_ALPHA2);
+        $countries = Arr::pluck((new ISO3166())->all(), ISO3166::KEY_ALPHA2);
 
         return in_array($value, $countries, true);
     }

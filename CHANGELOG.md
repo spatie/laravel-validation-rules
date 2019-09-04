@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 2.4.0 - 2019-09-04
+
+- add support for Laravel 6
+
 ## 2.3.4 - 2019-06-14
 
 - fix validation messages
