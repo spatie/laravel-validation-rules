@@ -17,12 +17,12 @@
     ],
     "require": {
         "php": "^7.2",
-        "illuminate/support": "^5.7|^6.0",
+        "illuminate/support": "^5.8|^6.0",
         "league/iso3166": "^2.1"
     },
     "require-dev": {
         "myclabs/php-enum": "^1.6",
-        "orchestra/testbench": "^3.7|^4.0",
+        "orchestra/testbench": "^3.8|^4.0",
         "phpunit/phpunit": "^8.0",
         "spatie/enum": "^2.2"
     },
