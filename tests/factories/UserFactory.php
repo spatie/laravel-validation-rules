@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Str;
+use Illuminate\Foundation\Auth\User;
 
 $factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
