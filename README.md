@@ -57,6 +57,8 @@ This validation rule will pass if the id of the logged in user matches the `user
 ```php
 // in a `FormRequest`
 
+use Spatie\ValidationRules\Rules\Authorized;
+
 public function rules()
 {
     return [
@@ -72,6 +74,8 @@ Determine if the field under validation is a valid ISO3166 country code.
 ```php
 // in a `FormRequest`
 
+use Spatie\ValidationRules\Rules\CountryCode;
+
 public function rules()
 {
     return [
@@ -84,6 +88,8 @@ If you want to validate a nullable country code field, you can call the `nullabl
 
 ```php
 // in a `FormRequest`
+
+use Spatie\ValidationRules\Rules\CountryCode;
 
 public function rules()
 {
@@ -112,6 +118,8 @@ The `Enum` rule can be used like this:
 ```php
 // in a `FormRequest`
 
+use Spatie\ValidationRules\Rules\Enum;
+
 public function rules()
 {
     return [
@@ -132,6 +140,8 @@ By default the rule assumes that you want to validate using `id` attribute. In t
 ```php
 // in a `FormRequest`
 
+use Spatie\ValidationRules\Rules\ModelsExist;
+
 public function rules()
 {
     return [
@@ -145,6 +155,8 @@ You can also pass an attribute name as the second argument. In the example below
 
 ```php
 // in a `FormRequest`
+
+use Spatie\ValidationRules\Rules\ModelsExist;
 
 public function rules()
 {
@@ -162,6 +174,8 @@ Here's an example where we are going to validate a string containing comma separ
 
 ```php
 // in a `FormRequest`
+
+use Spatie\ValidationRules\Rules\Delimited;
 
 public function rules()
 {
