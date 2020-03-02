@@ -17,13 +17,13 @@
     ],
     "require": {
         "php": "^7.2",
-        "illuminate/support": "^5.8|^6.0",
+        "illuminate/support": "^5.8|^6.0|^7.0",
         "league/iso3166": "^2.1"
     },
     "require-dev": {
         "myclabs/php-enum": "^1.6",
-        "orchestra/testbench": "^3.8|^4.0",
-        "phpunit/phpunit": "^8.0",
+        "orchestra/testbench": "^3.8|^4.0|^5.0",
+        "phpunit/phpunit": "^8.0|^9.0",
         "spatie/enum": "^2.2"
     },
     "autoload": {
@@ -50,5 +50,7 @@
                 "Spatie\\ValidationRules\\ValidationRulesServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
