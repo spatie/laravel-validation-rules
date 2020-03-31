@@ -126,6 +126,13 @@ class DelimitedTest extends TestCase
         $this->assertTrue($rule->min(2)->passes('attribute', '0, 1'));
     }
 
+    /** @test */
+    public function it_can_validate_nested_attributes_properly()
+    {
+        $rule = new Delimited('email');
+        $this->assertFalse($rule->passes('a.0.b', 'invalid email'));
+    }
+
     protected function assertRulePasses(string $value)
     {
         $this->assertTrue($this->rulePasses($value));
