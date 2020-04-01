@@ -4,8 +4,8 @@ namespace Spatie\ValidationRules\Tests\Rules;
 
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Lang;
-use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Rules\ModelsExist;
+use Spatie\ValidationRules\Tests\TestCase;
 
 class ModelsExistTest extends TestCase
 {

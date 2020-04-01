@@ -5,8 +5,8 @@ namespace Spatie\ValidationRules\Tests\Rules;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Lang;
-use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Rules\Authorized;
+use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Tests\TestClasses\Models\TestModel;
 use Spatie\ValidationRules\Tests\TestClasses\Policies\TestModelPolicy;
 

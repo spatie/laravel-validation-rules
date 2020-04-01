@@ -2,9 +2,9 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
-use Spatie\ValidationRules\Tests\TestCase;
-use Spatie\ValidationRules\Rules\Delimited;
 use Spatie\ValidationRules\Rules\CountryCode;
+use Spatie\ValidationRules\Rules\Delimited;
+use Spatie\ValidationRules\Tests\TestCase;
 
 class DelimitedTest extends TestCase
 {

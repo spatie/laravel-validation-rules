@@ -2,8 +2,8 @@
 
 namespace Spatie\ValidationRules\Rules;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class Authorized implements Rule
 {

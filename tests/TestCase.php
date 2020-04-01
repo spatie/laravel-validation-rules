@@ -2,11 +2,11 @@
 
 namespace Spatie\ValidationRules\Tests;
 
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\ValidationRules\ValidationRulesServiceProvider;
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
 
 abstract class TestCase extends Orchestra
 {
