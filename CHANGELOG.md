@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 2.5.1 - 2020-04-01
+
+- fix nested attributes validation (#38)
+
 ## 2.5.0 - 2020-03-02
 
 - add support for Laravel 7
