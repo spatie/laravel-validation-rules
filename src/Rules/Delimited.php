@@ -2,10 +2,10 @@
 
 namespace Spatie\ValidationRules\Rules;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class Delimited implements Rule
 {

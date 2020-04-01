@@ -2,9 +2,9 @@
 
 namespace Spatie\ValidationRules\Rules;
 
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Arr;
 use League\ISO3166\ISO3166;
-use Illuminate\Contracts\Validation\Rule;
 
 class CountryCode implements Rule
 {

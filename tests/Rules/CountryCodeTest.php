@@ -3,8 +3,8 @@
 namespace Spatie\ValidationRules\Tests\Rules;
 
 use Illuminate\Support\Facades\Lang;
-use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Rules\CountryCode;
+use Spatie\ValidationRules\Tests\TestCase;
 
 class CountryCodeTest extends TestCase
 {
