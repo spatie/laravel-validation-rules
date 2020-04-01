@@ -2,6 +2,7 @@
 
 namespace Spatie\ValidationRules\Rules;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
@@ -143,7 +144,7 @@ class Delimited implements Rule
 
     protected function validate(string $attribute, string $item): array
     {
-        $attribute = Str::afterLast($attribute, '.');
+        $attribute = Arr::last(explode('.', $attribute));
 
         $validator = Validator::make([$attribute => $item], [$attribute => $this->rule]);
 
