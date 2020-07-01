@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 2.5.2 - 2020-07-01
+
+- fix translation (#40)
+
 ## 2.5.1 - 2020-04-01
 
 - fix nested attributes validation (#38)
