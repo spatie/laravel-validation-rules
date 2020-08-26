@@ -39,7 +39,7 @@ class Authorized implements Rule
             return false;
         }
 
-        if (! $model = $this->className::find($value)) {
+        if (! $model = app($this->className)->resolveRouteBinding($value)) {
             return false;
         }
 
