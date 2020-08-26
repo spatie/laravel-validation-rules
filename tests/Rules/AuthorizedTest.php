@@ -90,4 +90,36 @@ class AuthorizedTest extends TestCase
 
         $this->assertEquals('name_field edit and TestModel', $rule->message());
     }
+
+    /** @test */
+    public function it_will_pass_if_alternate_auth_guard_is_specified()
+    {
+        $rule = new Authorized('edit', TestModel::class, 'alternate');
+
+        $user = factory(User::class)->create(['id' => 1]);
+        TestModel::create([
+            'id' => 1,
+            'user_id' => 1,
+        ]);
+
+        $this->actingAs($user, 'alternate');
+
+        $this->assertTrue($rule->passes('attribute', '1'));
+    }
+
+    /** @test */
+    public function it_will_return_false_if_auth_guard_is_incorrect()
+    {
+        $rule = new Authorized('edit', TestModel::class, 'web');
+
+        $user = factory(User::class)->create(['id' => 1]);
+        TestModel::create([
+            'id' => 1,
+            'user_id' => 1,
+        ]);
+
+        $this->actingAs($user, 'alternate');
+
+        $this->assertFalse($rule->passes('attribute', '1'));
+    }
 }
