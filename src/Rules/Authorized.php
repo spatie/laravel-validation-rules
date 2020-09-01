@@ -19,22 +19,25 @@ class Authorized implements Rule
     /** @var string */
     protected $attribute;
 
-    public function __construct(string $ability, string $className)
+    /**@var string */
+    protected $guard;
+
+    public function __construct(string $ability, string $className, string $guard = null)
     {
         $this->ability = $ability;
-
         $this->className = $className;
+        $this->guard = $guard;
     }
 
     public function passes($attribute, $value): bool
     {
         $this->attribute = $attribute;
 
-        if (! $user = Auth::user()) {
+        if (! $user = Auth::guard($this->guard)->user()) {
             return false;
         }
 
-        if (! $model = $this->className::find($value)) {
+        if (! $model = app($this->className)->resolveRouteBinding($value)) {
             return false;
         }
 

@@ -15,6 +15,7 @@ abstract class TestCase extends Orchestra
         parent::setUp();
 
         $this->setUpDatabase();
+        $this->setUpGuard();
 
         $this->app->make(EloquentFactory::class)->load(__DIR__.'/factories');
     }
@@ -43,5 +44,15 @@ abstract class TestCase extends Orchestra
             $table->unsignedInteger('user_id');
             $table->timestamps();
         });
+    }
+
+    protected function setUpGuard()
+    {
+        config([
+            'auth.guards.alternate' => [
+                'driver' => 'session',
+                'provider' => 'users',
+            ],
+        ]);
     }
 }

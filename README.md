@@ -78,6 +78,15 @@ public function rules()
 }
 ```
 
+Optionally, you can provide an authentication guard as the third parameter.
+
+```php
+new Authorized('edit', TestModel::class, 'guard-name')
+```
+
+#### Model resolution
+If you have implemented the `getRouteKeyName` method in your model, it will be used to resolve the model instance. For further information see [Customizing The Default Key Name](https://laravel.com/docs/7.x/routing)
+
 ### `CountryCode`
 
 Determine if the field under validation is a valid ISO3166 country code.
