@@ -22,7 +22,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
-        "laravel/legacy-factories": "^1.0",
+        "laravel/legacy-factories": "^1.0.4",
         "myclabs/php-enum": "^1.6",
         "orchestra/testbench": "^4.5|^5.0|^6.0",
         "phpunit/phpunit": "^8.0|^9.0|^9.3",
