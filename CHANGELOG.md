@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 2.6.1 - 2020-09-08
+
+- add support for Laravel 8
+
 ## 2.6.0 - 2020-09-01
 
 - adds the ability to specify an auth guard, and uses route name resolution for models (#41)
