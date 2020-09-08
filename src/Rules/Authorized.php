@@ -19,7 +19,7 @@ class Authorized implements Rule
     /** @var string */
     protected $attribute;
 
-    /**@var string */
+    /** @var string */
     protected $guard;
 
     public function __construct(string $ability, string $className, string $guard = null)
