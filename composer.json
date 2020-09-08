@@ -21,8 +21,10 @@
         "league/iso3166": "^2.1.5"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "laravel/legacy-factories": "^1.0",
         "myclabs/php-enum": "^1.6",
-        "orchestra/testbench": "^4.0|^5.0|^6.0",
+        "orchestra/testbench": "^4.5|^5.0|^6.0",
         "phpunit/phpunit": "^8.0|^9.0|^9.3",
         "spatie/enum": "^2.2"
     },
@@ -38,7 +40,8 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
     },
     "config": {
         "sort-packages": true
