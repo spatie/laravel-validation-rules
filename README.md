@@ -276,6 +276,30 @@ new Delimited('email|max:20')
 - `'invalid'` // fails
 - `'loooooooonnnggg@example.com'` // fails
 
+#### Passing custom error messages
+
+The constructor of the validator accepts a custom error messages array as second parameter.
+
+```php
+// in a `FormRequest`
+
+use Spatie\ValidationRules\Rules\Delimited;
+
+public function rules()
+{
+    return [
+        'emails' => [new Delimited('email', $this->messages())],
+    ];
+}
+
+public function messages()
+{
+    return [
+        'emails.email' => 'Not all the given e-mails are valid.',
+    ];
+}
+```
+
 ### Testing
 
 ``` bash

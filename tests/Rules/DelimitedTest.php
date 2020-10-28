@@ -133,6 +133,14 @@ class DelimitedTest extends TestCase
         $this->assertFalse($rule->passes('a.0.b', 'invalid email'));
     }
 
+    /** @test */
+    public function it_can_handle_custom_error_messages()
+    {
+        $rule = new Delimited('email', ['emails.email' => 'a custom message comes here.']);
+        $this->assertFalse($rule->passes('emails', 'invalid-email-address'));
+        $this->assertSame($rule->message(), 'a custom message comes here.');
+    }
+
     protected function assertRulePasses(string $value)
     {
         $this->assertTrue($this->rulePasses($value));
