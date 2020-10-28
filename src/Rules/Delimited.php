@@ -28,9 +28,13 @@ class Delimited implements Rule
     /** @var string */
     protected $validationMessageWord = 'item';
 
-    public function __construct($rule)
+    /** @var array */
+    protected $customErrorMessages;
+
+    public function __construct($rule, array $customErrorMessages = [])
     {
         $this->rule = $rule;
+        $this->customErrorMessages = $customErrorMessages;
     }
 
     public function min(int $minimum)
@@ -146,7 +150,11 @@ class Delimited implements Rule
     {
         $attribute = Arr::last(explode('.', $attribute));
 
-        $validator = Validator::make([$attribute => $item], [$attribute => $this->rule]);
+        $validator = Validator::make(
+            [$attribute => $item],
+            [$attribute => $this->rule],
+            $this->customErrorMessages
+        );
 
         return [
             $validator->passes(),
