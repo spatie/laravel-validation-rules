@@ -16,12 +16,11 @@
         }
     ],
     "require": {
-        "php": "^7.2",
+        "php": "^7.2|^8.0",
         "illuminate/support": "^6.0|^7.0|^8.0",
         "league/iso3166": "^2.1.5"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
         "laravel/legacy-factories": "^1.0.4",
         "myclabs/php-enum": "^1.6",
         "orchestra/testbench": "^4.5|^5.0|^6.0",
