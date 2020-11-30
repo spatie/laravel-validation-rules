@@ -20,12 +20,11 @@
         "illuminate/support": "^6.0|^7.0|^8.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
         "laravel/legacy-factories": "^1.0.4",
         "myclabs/php-enum": "^1.6",
         "orchestra/testbench": "^4.5|^5.0|^6.0",
         "phpunit/phpunit": "^9.3",
-        "spatie/enum": "^2.2"
+        "spatie/enum": "^2.2|^3.0"
     },
     "autoload": {
         "psr-4": {
