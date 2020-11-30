@@ -4,7 +4,9 @@ namespace Spatie\ValidationRules\Tests\Rules;
 
 use Spatie\ValidationRules\Rules\CountryCode;
 use Spatie\ValidationRules\Rules\Delimited;
+use Spatie\ValidationRules\Rules\Enum;
 use Spatie\ValidationRules\Tests\TestCase;
+use Spatie\ValidationRules\Tests\TestClasses\Enums\MyCLabsEnum;
 
 class DelimitedTest extends TestCase
 {
@@ -113,10 +115,10 @@ class DelimitedTest extends TestCase
     /** @test */
     public function it_can_accept_another_rule()
     {
-        $rule = new Delimited(new CountryCode());
+        $rule = new Delimited(new Enum(MyCLabsEnum::class));
 
-        $this->assertTrue($rule->passes('attribute', 'BE, NL'));
-        $this->assertFalse($rule->passes('attribute', 'BE, NL, blablabla'));
+        $this->assertTrue($rule->passes('attribute', 'ONE, TWO'));
+        $this->assertFalse($rule->passes('attribute', 'ONE, FOUR'));
     }
 
     /** @test */

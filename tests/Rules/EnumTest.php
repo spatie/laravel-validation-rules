@@ -5,6 +5,7 @@ namespace Spatie\ValidationRules\Tests\Rules;
 use Illuminate\Support\Facades\Lang;
 use Spatie\ValidationRules\Rules\Enum;
 use Spatie\ValidationRules\Tests\TestCase;
+use Spatie\ValidationRules\Tests\TestClasses\Enums\MyCLabsEnum;
 
 class EnumTest extends TestCase
 {
@@ -55,20 +56,4 @@ class EnumTest extends TestCase
 
         $this->assertEquals('enum_field ONE, TWO, THREE', $rule->message());
     }
-}
-
-class MyCLabsEnum extends \MyCLabs\Enum\Enum
-{
-    const ONE = 'one';
-    const TWO = 'two';
-    const THREE = 'three';
-}
-
-/**
- * @method static self ONE()
- * @method static self TWO()
- * @method static self THREE()
- */
-class SpatieEnum extends \Spatie\Enum\Enum
-{
 }
