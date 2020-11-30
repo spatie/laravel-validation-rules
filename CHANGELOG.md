@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 2.7.1 - 2020-11-30
+
+- add support for PHP 8
+
 ## 2.7.0 - 2020-10-28
 
 - support custom error messages (#44)
