@@ -2,7 +2,6 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
-use Spatie\ValidationRules\Rules\CountryCode;
 use Spatie\ValidationRules\Rules\Delimited;
 use Spatie\ValidationRules\Rules\Enum;
 use Spatie\ValidationRules\Tests\TestCase;
