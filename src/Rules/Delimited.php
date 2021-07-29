@@ -132,7 +132,7 @@ class Delimited implements Rule
 
         if (!$this->allowDuplicates) {
             if ($items->unique()->count() !== $items->count()) {
-                $this->message = __('validationRules::messages.delimited.unique');
+                $this->message = $this->getErrorMessage($attribute, 'unique');
 
                 return false;
             }
@@ -162,10 +162,10 @@ class Delimited implements Rule
         ];
     }
 
-    protected function getErrorMessage($attribute, $rule, $data)
+    protected function getErrorMessage($attribute, $rule, $data = [])
     {
         if (array_key_exists($attribute . '.' . $rule, $this->customErrorMessages)) {
-            return __($this->customErrorMessages[$attribute . '.min'], $data);
+            return __($this->customErrorMessages[$attribute . '.' . $rule], $data);
         }
 
         return __('validationRules::messages.delimited.' . $rule, $data);
