@@ -36,6 +36,7 @@ php artisan vendor:publish --provider="Spatie\ValidationRules\ValidationRulesSer
 
 - [`Authorized`](#authorized)
 - [`CountryCode`](#countrycode)
+- [`Currency`](#currency)
 - [`Enum`](#enum)
 - [`ModelsExist`](#modelsexist)
 - [`Delimited`](#delimited)
@@ -110,6 +111,39 @@ public function rules()
 {
     return [
         'country_code' => [(new CountryCode())->nullable()],
+    ];
+}
+```
+
+### `Currency`
+
+Determine if the field under validation is a valid ISO4217 currency.
+
+```php
+// in a `FormRequest`
+
+use Spatie\ValidationRules\Rules\Currency;
+
+public function rules()
+{
+    return [
+        'currency' => ['required', new Currency()], // Must be present and a valid currency
+    ];
+}
+```
+
+If you want to validate a nullable currency field, simple do not let it be required as described in the [Laravel Docs for implicit validation rules](https://laravel.com/docs/master/validation#implicit-rules):
+> ... when an attribute being validated is not present or contains an empty string, normal validation rules, including custom rules, are not run
+
+```php
+// in a `FormRequest`
+
+use Spatie\ValidationRules\Rules\Currency;
+
+public function rules()
+{
+    return [
+        'currency' => [new Currency()], // This will pass for any valid currency, an empty value or null
     ];
 }
 ```
