@@ -17,11 +17,11 @@
     ],
     "require": {
         "php": "^7.3|^8.0",
-        "alcohol/iso4217": "^4.0",
         "illuminate/support": "^6.0|^7.0|^8.0"
     },
     "require-dev": {
         "laravel/legacy-factories": "^1.0.4",
+        "league/iso3166": "^3.0",
         "myclabs/php-enum": "^1.6",
         "orchestra/testbench": "^4.5|^5.0|^6.0",
         "phpunit/phpunit": "^9.3",

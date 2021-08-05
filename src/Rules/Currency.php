@@ -2,10 +2,8 @@
 
 namespace Spatie\ValidationRules\Rules;
 
-use Alcohol\ISO4217;
-use DomainException;
 use Illuminate\Contracts\Validation\Rule;
-use OutOfBoundsException;
+use League\ISO3166\ISO3166;
 
 class Currency implements Rule
 {
@@ -16,15 +14,13 @@ class Currency implements Rule
     {
         $this->attribute = $attribute;
 
-        if ($value === null) {
+        if ($value === null || $value === '') {
             return false;
         }
 
-        try {
-            return boolval((new ISO4217())->getByAlpha3($value)); // This method does not accept null
-        } catch (DomainException | OutOfBoundsException $exception) {
-            return false;
-        }
+        $currencies = array_unique(data_get((new ISO3166)->all(), '*.currency.*'));
+
+        return in_array($value, $currencies, true);
     }
 
     public function message(): string
