@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 3.1.0 - 2021-08-06
+
+- add ISO4217 currency validation rule (#48)
+
 ## 3.0.0 - 2020-11-30
 
 - move iso3166 package to `suggest`
