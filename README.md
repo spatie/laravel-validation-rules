@@ -36,6 +36,7 @@ php artisan vendor:publish --provider="Spatie\ValidationRules\ValidationRulesSer
 
 - [`Authorized`](#authorized)
 - [`CountryCode`](#countrycode)
+- [`Currency`](#currency)
 - [`Enum`](#enum)
 - [`ModelsExist`](#modelsexist)
 - [`Delimited`](#delimited)
@@ -84,7 +85,9 @@ If you have implemented the `getRouteKeyName` method in your model, it will be u
 
 ### `CountryCode`
 
-Determine if the field under validation is a valid ISO3166 country code.
+Determine if the field under validation is a valid [2 letter ISO3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) (example of valid country codes: `GB`, `DK`, `NL`).
+
+**Note** that this rule require the package [`league/iso3166`](https://github.com/thephpleague/iso3166) to be installed: `composer require league/iso3166`
 
 ```php
 // in a `FormRequest`
@@ -110,6 +113,41 @@ public function rules()
 {
     return [
         'country_code' => [(new CountryCode())->nullable()],
+    ];
+}
+```
+
+### `Currency`
+
+Determine if the field under validation is a valid [3 letter ISO4217 currency code](https://en.wikipedia.org/wiki/ISO_4217#Active_codes) (example of valid currencies: `EUR`, `USD`, `CAD`).
+
+**Note** that this rule require the package [`league/iso3166`](https://github.com/thephpleague/iso3166) to be installed: `composer require league/iso3166`
+
+```php
+// in a `FormRequest`
+
+use Spatie\ValidationRules\Rules\Currency;
+
+public function rules()
+{
+    return [
+        'currency' => ['required', new Currency()], // Must be present and a valid currency
+    ];
+}
+```
+
+If you want to validate a nullable currency field, simple do not let it be required as described in the [Laravel Docs for implicit validation rules](https://laravel.com/docs/master/validation#implicit-rules):
+> ... when an attribute being validated is not present or contains an empty string, normal validation rules, including custom rules, are not run
+
+```php
+// in a `FormRequest`
+
+use Spatie\ValidationRules\Rules\Currency;
+
+public function rules()
+{
+    return [
+        'currency' => [new Currency()], // This will pass for any valid currency, an empty value or null
     ];
 }
 ```

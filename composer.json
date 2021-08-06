@@ -21,6 +21,7 @@
     },
     "require-dev": {
         "laravel/legacy-factories": "^1.0.4",
+        "league/iso3166": "^3.0",
         "myclabs/php-enum": "^1.6",
         "orchestra/testbench": "^4.5|^5.0|^6.0",
         "phpunit/phpunit": "^9.3",
@@ -37,7 +38,7 @@
         }
     },
     "suggest": {
-        "league/iso3166": "Needed for the CountryCode rule"
+        "league/iso3166": "Needed for the CountryCode rule and Currency rule"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
