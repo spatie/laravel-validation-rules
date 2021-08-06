@@ -85,7 +85,9 @@ If you have implemented the `getRouteKeyName` method in your model, it will be u
 
 ### `CountryCode`
 
-Determine if the field under validation is a valid ISO3166 country code.
+Determine if the field under validation is a valid [2 letter ISO3166 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes) (example of valid country codes: `GB`, `DK`, `NL`).
+
+**Note** that this rule require the package [`league/iso3166`](https://github.com/thephpleague/iso3166) to be installed: `composer require league/iso3166`
 
 ```php
 // in a `FormRequest`
@@ -117,7 +119,9 @@ public function rules()
 
 ### `Currency`
 
-Determine if the field under validation is a valid ISO4217 currency.
+Determine if the field under validation is a valid [3 letter ISO4217 currency code](https://en.wikipedia.org/wiki/ISO_4217#Active_codes) (example of valid currencies: `EUR`, `USD`, `CAD`).
+
+**Note** that this rule require the package [`league/iso3166`](https://github.com/thephpleague/iso3166) to be installed: `composer require league/iso3166`
 
 ```php
 // in a `FormRequest`

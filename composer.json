@@ -38,7 +38,7 @@
         }
     },
     "suggest": {
-        "league/iso3166": "Needed for the CountryCode rule"
+        "league/iso3166": "Needed for the CountryCode rule and Currency rule"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
