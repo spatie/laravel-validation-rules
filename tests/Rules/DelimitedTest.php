@@ -19,6 +19,19 @@ class DelimitedTest extends TestCase
         $this->rule = (new Delimited('email'));
     }
 
+    /**
+     * @test
+     */
+    public function it_can_use_custom_errors_messages()
+    {
+        $rule = (new Delimited('email', [
+            'email.min' => 'You must specify at least :min emails',
+        ]))->min(2);
+
+        $rule->passes('email', 'sebastian@example.com');
+        $this->assertEquals('You must specify at least 2 emails', $rule->message());
+    }
+
     /** @test */
     public function it_can_validate_comma_separated_email_addresses()
     {
