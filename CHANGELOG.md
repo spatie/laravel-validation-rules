@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 3.1.1 - 2021-08-15
+
+- fix custom validation messages on delimited rule
+
 ## 3.1.0 - 2021-08-06
 
 - add ISO4217 currency validation rule (#48)
