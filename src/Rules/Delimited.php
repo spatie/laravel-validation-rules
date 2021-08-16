@@ -90,7 +90,7 @@ class Delimited implements Rule
                 return strlen((string) $item) > 0;
             });
 
-        if (!is_null($this->minimum)) {
+        if (! is_null($this->minimum)) {
             if ($items->count() < $this->minimum) {
                 $this->message = $this->getErrorMessage($attribute, 'min', [
                     'min' => $this->minimum,
@@ -102,7 +102,7 @@ class Delimited implements Rule
             }
         }
 
-        if (!is_null($this->maximum)) {
+        if (! is_null($this->maximum)) {
             if ($items->count() > $this->maximum) {
                 $this->message = $this->getErrorMessage($attribute, 'max', [
                     'max' => $this->maximum,
@@ -123,14 +123,14 @@ class Delimited implements Rule
         foreach ($items as $item) {
             [$isValid, $validationMessage] = $this->validate($attribute, $item);
 
-            if (!$isValid) {
+            if (! $isValid) {
                 $this->message = $validationMessage;
 
                 return false;
             }
         }
 
-        if (!$this->allowDuplicates) {
+        if (! $this->allowDuplicates) {
             if ($items->unique()->count() !== $items->count()) {
                 $this->message = $this->getErrorMessage($attribute, 'unique');
 
