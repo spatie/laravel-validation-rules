@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 3.2.0 - 2022-01-12
+
+## What's Changed
+
+- fix psr version by @iamfarhad in https://github.com/spatie/laravel-validation-rules/pull/50
+- Allow Laravel 9
+
+## New Contributors
+
+- @iamfarhad made their first contribution in https://github.com/spatie/laravel-validation-rules/pull/50
+
+**Full Changelog**: https://github.com/spatie/laravel-validation-rules/compare/3.1.1...3.2.0
+
 ## 3.1.1 - 2021-08-15
 
 - fix custom validation messages on delimited rule
