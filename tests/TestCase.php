@@ -24,7 +24,6 @@ abstract class TestCase extends Orchestra
 
         $this->setUpDatabase();
         $this->setUpGuard();
-
     }
 
     protected function getPackageProviders($app)

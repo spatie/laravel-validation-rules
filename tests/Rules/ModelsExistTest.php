@@ -2,10 +2,10 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
-use Spatie\ValidationRules\Tests\TestModel\User;
 use Illuminate\Support\Facades\Lang;
 use Spatie\ValidationRules\Rules\ModelsExist;
 use Spatie\ValidationRules\Tests\TestCase;
+use Spatie\ValidationRules\Tests\TestModel\User;
 
 class ModelsExistTest extends TestCase
 {
