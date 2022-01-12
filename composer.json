@@ -16,20 +16,20 @@
         }
     ],
     "require": {
-        "php": "^7.3|^8.0",
-        "illuminate/support": "^8.0"
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0|^9.0"
     },
     "require-dev": {
-        "laravel/legacy-factories": "^1.0.4",
         "league/iso3166": "^3.0",
         "myclabs/php-enum": "^1.6",
-        "orchestra/testbench": "^6.23",
+        "orchestra/testbench": "^6.23|^7.0",
         "phpunit/phpunit": "^9.4",
         "spatie/enum": "^2.2|^3.0"
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\ValidationRules\\": "src"
+            "Spatie\\ValidationRules\\": "src",
+            "Spatie\\ValidationRules\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {

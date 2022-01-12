@@ -2,7 +2,6 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Lang;
 use Spatie\ValidationRules\Rules\Authorized;
@@ -11,6 +10,7 @@ use Spatie\ValidationRules\Tests\TestClasses\Models\TestModel;
 use Spatie\ValidationRules\Tests\TestClasses\Models\TestRouteKeyModel;
 use Spatie\ValidationRules\Tests\TestClasses\Policies\TestModelPolicy;
 use Spatie\ValidationRules\Tests\TestClasses\Policies\TestRouteKeyModelPolicy;
+use Spatie\ValidationRules\Tests\TestModel\User;
 
 class AuthorizedTest extends TestCase
 {
@@ -27,7 +27,7 @@ class AuthorizedTest extends TestCase
     {
         $rule = new Authorized('edit', TestModel::class);
 
-        $user = factory(User::class)->create(['id' => 1]);
+        $user = User::factory()->create(['id' => 1]);
         TestModel::create([
             'id' => 1,
             'user_id' => $user->id,
@@ -43,7 +43,7 @@ class AuthorizedTest extends TestCase
     {
         $rule = new Authorized('edit', TestModel::class);
 
-        $user = factory(User::class)->create(['id' => 1]);
+        $user = User::factory()->create(['id' => 1]);
         TestModel::create([
             'id' => 1,
             'user_id' => $user->id,
@@ -57,7 +57,7 @@ class AuthorizedTest extends TestCase
     {
         $rule = new Authorized('edit', TestModel::class);
 
-        $user = factory(User::class)->create(['id' => 1]);
+        $user = User::factory()->create(['id' => 1]);
         TestModel::create([
             'id' => 1,
             'user_id' => $user->id,
@@ -71,7 +71,7 @@ class AuthorizedTest extends TestCase
     {
         $rule = new Authorized('edit', TestModel::class);
 
-        $user = factory(User::class)->create(['id' => 1]);
+        $user = User::factory()->create(['id' => 1]);
         TestModel::create([
             'id' => 1,
             'user_id' => 2,
@@ -99,7 +99,7 @@ class AuthorizedTest extends TestCase
     {
         $rule = new Authorized('edit', TestRouteKeyModel::class);
 
-        $user = factory(User::class)->create(['id' => 1]);
+        $user = User::factory()->create(['id' => 1]);
         TestRouteKeyModel::create([
             'id' => 1,
             'name' => 'abc123',
@@ -116,7 +116,7 @@ class AuthorizedTest extends TestCase
     {
         $rule = new Authorized('edit', TestModel::class, 'alternate');
 
-        $user = factory(User::class)->create(['id' => 1]);
+        $user = User::factory()->create(['id' => 1]);
         TestModel::create([
             'id' => 1,
             'user_id' => 1,
@@ -132,7 +132,7 @@ class AuthorizedTest extends TestCase
     {
         $rule = new Authorized('edit', TestModel::class, 'web');
 
-        $user = factory(User::class)->create(['id' => 1]);
+        $user = User::factory()->create(['id' => 1]);
         TestModel::create([
             'id' => 1,
             'user_id' => 1,

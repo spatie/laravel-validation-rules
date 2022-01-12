@@ -2,7 +2,7 @@
 
 namespace Spatie\ValidationRules\Tests\Rules;
 
-use Illuminate\Foundation\Auth\User;
+use Spatie\ValidationRules\Tests\TestModel\User;
 use Illuminate\Support\Facades\Lang;
 use Spatie\ValidationRules\Rules\ModelsExist;
 use Spatie\ValidationRules\Tests\TestCase;
@@ -17,11 +17,11 @@ class ModelsExistTest extends TestCase
         $this->assertTrue($rule->passes('userIds', []));
 
         $this->assertFalse($rule->passes('userIds', [1]));
-        factory(User::class)->create(['id' => 1]);
+        User::factory()->create(['id' => 1]);
         $this->assertTrue($rule->passes('userIds', [1]));
 
         $this->assertFalse($rule->passes('userIds', [1, 2]));
-        factory(User::class)->create(['id' => 2]);
+        User::factory()->create(['id' => 2]);
         $this->assertTrue($rule->passes('userIds', [1, 2]));
         $this->assertTrue($rule->passes('userIds', [1]));
     }
@@ -34,7 +34,7 @@ class ModelsExistTest extends TestCase
         $this->assertTrue($rule->passes('userEmails', []));
 
         $this->assertFalse($rule->passes('userEmails', ['user@example.com']));
-        factory(User::class)->create(['email' => 'user@example.com']);
+        User::factory()->create(['email' => 'user@example.com']);
         $this->assertTrue($rule->passes('userEmails', ['user@example.com']));
     }
 

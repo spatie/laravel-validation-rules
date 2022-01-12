@@ -2,7 +2,7 @@
 
 namespace Spatie\ValidationRules\Tests;
 
-use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -14,10 +14,17 @@ abstract class TestCase extends Orchestra
     {
         parent::setUp();
 
+        Factory::guessFactoryNamesUsing(
+            function (string $modelName) {
+                return 'Spatie\\ValidationRules\\Database\\Factories\\' . class_basename($modelName) . 'Factory';
+            }
+        );
+
+
+
         $this->setUpDatabase();
         $this->setUpGuard();
 
-        $this->app->make(EloquentFactory::class)->load(__DIR__.'/factories');
     }
 
     protected function getPackageProviders($app)
