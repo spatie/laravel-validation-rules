@@ -125,6 +125,16 @@ class DelimitedTest extends TestCase
     }
 
     /** @test */
+    public function it_can_accept_chained_properties()
+    {
+        $this->rule->doNotTrimItems()->max(2);
+
+        $this->assertRulePasses('sebastian@example.com,freek@example.com');
+        $this->assertRuleFails('sebastian@example.com , freek@example.com');
+        $this->assertRuleFails('sebastian@example.com,freek@example.com,alex@example.com');
+    }
+
+    /** @test */
     public function it_can_accept_another_rule()
     {
         $rule = new Delimited(new Enum(MyCLabsEnum::class));
