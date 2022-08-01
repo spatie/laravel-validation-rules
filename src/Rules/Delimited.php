@@ -69,7 +69,7 @@ class Delimited implements Rule
     {
         $this->trimItems = false;
 
-        return true;
+        return $this;
     }
 
     public function validationMessageWord(string $word)
