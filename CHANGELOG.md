@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 3.2.1 - 2022-08-01
+
+- fix chaining `doNotTrimItems`
+
 ## 3.2.0 - 2022-01-12
 
 ## What's Changed
