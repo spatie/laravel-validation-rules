@@ -1,0 +1,24 @@
+name: code-style
+
+on: [push, pull_request]
+
+jobs:
+    pint:
+        runs-on: ubuntu-latest
+        name: Pint
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 7.4 # Lowest supported PHP version
+                  extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+                  coverage: none
+
+            - name: Install dependencies
+              run: composer update --prefer-dist --no-interaction
+
+            - name: Inspect code
+              run: composer inspect
