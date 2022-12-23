@@ -20,6 +20,7 @@
         "illuminate/support": "^8.0|^9.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.13",
         "league/iso3166": "^3.0",
         "myclabs/php-enum": "^1.6",
         "orchestra/testbench": "^6.23|^7.0",
