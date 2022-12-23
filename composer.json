@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^8.0",
         "illuminate/support": "^8.0|^9.0"
     },
     "require-dev": {
@@ -48,7 +48,10 @@
         "inspect": "./vendor/bin/pint --test"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "8.0"
+        }
     },
     "extra": {
         "laravel": {
