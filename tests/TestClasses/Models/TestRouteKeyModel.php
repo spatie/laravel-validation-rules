@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User;
 class TestRouteKeyModel extends Model
 {
     protected $guarded = [];
+
     protected $table = 'test_models';
 
     public function getRouteKeyName()
