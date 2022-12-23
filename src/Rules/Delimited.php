@@ -164,10 +164,10 @@ class Delimited implements Rule
 
     protected function getErrorMessage($attribute, $rule, $data = [])
     {
-        if (array_key_exists($attribute . '.' . $rule, $this->customErrorMessages)) {
-            return __($this->customErrorMessages[$attribute . '.' . $rule], $data);
+        if (array_key_exists($attribute.'.'.$rule, $this->customErrorMessages)) {
+            return __($this->customErrorMessages[$attribute.'.'.$rule], $data);
         }
 
-        return __('validationRules::messages.delimited.' . $rule, $data);
+        return __('validationRules::messages.delimited.'.$rule, $data);
     }
 }

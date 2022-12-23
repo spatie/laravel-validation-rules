@@ -16,11 +16,9 @@ abstract class TestCase extends Orchestra
 
         Factory::guessFactoryNamesUsing(
             function (string $modelName) {
-                return 'Spatie\\ValidationRules\\Database\\Factories\\' . class_basename($modelName) . 'Factory';
+                return 'Spatie\\ValidationRules\\Database\\Factories\\'.class_basename($modelName).'Factory';
             }
         );
-
-
 
         $this->setUpDatabase();
         $this->setUpGuard();
