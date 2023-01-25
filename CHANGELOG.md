@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 3.2.2 - 2023-01-25
+
+### What's Changed
+
+- Add PHP 8.2 Support by @patinthehat in https://github.com/spatie/laravel-validation-rules/pull/57
+- Install Laravel Pint by @imdhemy in https://github.com/spatie/laravel-validation-rules/pull/59
+
+### New Contributors
+
+- @patinthehat made their first contribution in https://github.com/spatie/laravel-validation-rules/pull/57
+- @imdhemy made their first contribution in https://github.com/spatie/laravel-validation-rules/pull/59
+
+**Full Changelog**: https://github.com/spatie/laravel-validation-rules/compare/3.2.1...3.2.2
+
 ## 3.2.1 - 2022-08-01
 
 - fix chaining `doNotTrimItems`
