@@ -48,10 +48,7 @@
         "inspect": "./vendor/bin/pint --test"
     },
     "config": {
-        "sort-packages": true,
-        "platform": {
-            "php": "8.0.2"
-        }
+        "sort-packages": true
     },
     "extra": {
         "laravel": {
