@@ -25,6 +25,8 @@ class Delimited implements Rule
     /** @var bool */
     protected $trimItems = true;
 
+    protected bool $asCsv = false;
+
     /** @var string */
     protected $validationMessageWord = 'item';
 
@@ -79,13 +81,20 @@ class Delimited implements Rule
         return $this;
     }
 
+    public function asCsv(): static
+    {
+        $this->asCsv = true;
+
+        return $this;
+    }
+
     public function passes($attribute, $value)
     {
         if ($this->trimItems) {
             $value = trim($value);
         }
 
-        $items = collect(explode($this->separatedBy, $value))
+        $items = collect($this->asCsv ? str_getcsv($value, $this->separatedBy) : explode($this->separatedBy, $value))
             ->filter(function ($item) {
                 return strlen((string) $item) > 0;
             });
