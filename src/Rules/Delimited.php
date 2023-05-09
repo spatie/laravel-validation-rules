@@ -85,7 +85,7 @@ class Delimited implements Rule
             $value = trim($value);
         }
 
-        $items = collect(explode($this->separatedBy, $value))
+        $items = collect(str_getcsv($value, $this->separatedBy))
             ->filter(function ($item) {
                 return strlen((string) $item) > 0;
             });
