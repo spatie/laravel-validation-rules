@@ -106,6 +106,15 @@ class DelimitedTest extends TestCase
     }
 
     /** @test */
+    public function it_can_treat_input_as_csv()
+    {
+        $rule = (new Delimited('string|min:5'))->asCsv();
+
+        $this->assertTrue($rule->passes('attribute', '"Doe, John", "Doe, Jane"'));
+        $this->assertFalse($rule->passes('attribute', '"Doe", "Jane"'));
+    }
+
+    /** @test */
     public function it_can_accept_a_rule_as_an_array()
     {
         $rule = new Delimited(['email']);
