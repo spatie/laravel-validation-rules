@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 3.3.0 - 2023-05-09
+
+### What's Changed
+
+- use str_getcsv instead of explode in Delimited rule by @ragulka in https://github.com/spatie/laravel-validation-rules/pull/62
+
+### New Contributors
+
+- @ragulka made their first contribution in https://github.com/spatie/laravel-validation-rules/pull/62
+
+**Full Changelog**: https://github.com/spatie/laravel-validation-rules/compare/3.2.2...3.3.0
+
 ## 3.2.2 - 2023-01-25
 
 ### What's Changed
