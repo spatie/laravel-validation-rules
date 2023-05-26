@@ -1,54 +1,45 @@
 <?php
 
-namespace Spatie\ValidationRules\Tests\Rules;
-
 use Illuminate\Support\Facades\Lang;
+use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertFalse;
+use function PHPUnit\Framework\assertTrue;
 use Spatie\ValidationRules\Rules\ModelsExist;
-use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Tests\TestModel\User;
 
-class ModelsExistTest extends TestCase
-{
-    /** @test */
-    public function it_will_return_true_if_all_model_ids_exist()
-    {
-        $rule = new ModelsExist(User::class);
+it('will return true if all model ids exist', function () {
+    $rule = new ModelsExist(User::class);
 
-        $this->assertTrue($rule->passes('userIds', []));
+    assertTrue($rule->passes('userIds', []));
 
-        $this->assertFalse($rule->passes('userIds', [1]));
-        User::factory()->create(['id' => 1]);
-        $this->assertTrue($rule->passes('userIds', [1]));
+    assertFalse($rule->passes('userIds', [1]));
+    User::factory()->create(['id' => 1]);
+    assertTrue($rule->passes('userIds', [1]));
 
-        $this->assertFalse($rule->passes('userIds', [1, 2]));
-        User::factory()->create(['id' => 2]);
-        $this->assertTrue($rule->passes('userIds', [1, 2]));
-        $this->assertTrue($rule->passes('userIds', [1]));
-    }
+    assertFalse($rule->passes('userIds', [1, 2]));
+    User::factory()->create(['id' => 2]);
+    assertTrue($rule->passes('userIds', [1, 2]));
+    assertTrue($rule->passes('userIds', [1]));
+});
 
-    /** @test */
-    public function it_can_validate_existence_of_models_by_column()
-    {
-        $rule = new ModelsExist(User::class, 'email');
+it('can validate existence of models by column', function () {
+    $rule = new ModelsExist(User::class, 'email');
 
-        $this->assertTrue($rule->passes('userEmails', []));
+    assertTrue($rule->passes('userEmails', []));
 
-        $this->assertFalse($rule->passes('userEmails', ['user@example.com']));
-        User::factory()->create(['email' => 'user@example.com']);
-        $this->assertTrue($rule->passes('userEmails', ['user@example.com']));
-    }
+    assertFalse($rule->passes('userEmails', ['user@example.com']));
+    User::factory()->create(['email' => 'user@example.com']);
+    assertTrue($rule->passes('userEmails', ['user@example.com']));
+});
 
-    /** @test */
-    public function it_passes_relevant_data_to_the_validation_message()
-    {
-        Lang::addLines([
-            'messages.model_ids' => ':attribute :model :modelAttribute :modelIds',
-        ], Lang::getLocale(), 'validationRules');
+it('passes relevant data to the validation message', function () {
+    Lang::addLines([
+        'messages.model_ids' => ':attribute :model :modelAttribute :modelIds',
+    ], Lang::getLocale(), 'validationRules');
 
-        $rule = new ModelsExist(User::class, 'id');
+    $rule = new ModelsExist(User::class, 'id');
 
-        $rule->passes('userIds', [1, 2]);
+    $rule->passes('userIds', [1, 2]);
 
-        $this->assertEquals('userIds User id 1, 2', $rule->message());
-    }
-}
+    assertEquals('userIds User id 1, 2', $rule->message());
+});
