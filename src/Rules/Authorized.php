@@ -7,27 +7,15 @@ use Illuminate\Support\Facades\Auth;
 
 class Authorized implements Rule
 {
-    /** @var string */
-    protected $ability;
+    protected string $attribute;
 
-    /** @var array */
-    protected $arguments;
-
-    /** @var string */
-    protected $className;
-
-    /** @var string */
-    protected $attribute;
-
-    /** @var string */
-    protected $guard;
-
-    public function __construct(string $ability, string $className, string $guard = null)
-    {
-        $this->ability = $ability;
-        $this->className = $className;
-        $this->guard = $guard;
-    }
+    public function __construct(
+        protected string $ability, 
+        protected string $className,
+        protected ?string $guard = null,
+        protected ?string $column = null,
+    )
+    {}
 
     public function passes($attribute, $value): bool
     {
@@ -37,7 +25,7 @@ class Authorized implements Rule
             return false;
         }
 
-        if (! $model = app($this->className)->resolveRouteBinding($value)) {
+        if (! $model = app($this->className)->resolveRouteBinding($value, $this->column)) {
             return false;
         }
 

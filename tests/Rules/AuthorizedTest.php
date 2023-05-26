@@ -112,6 +112,23 @@ class AuthorizedTest extends TestCase
     }
 
     /** @test */
+    public function it_will_pass_when_using_alternate_route_key_name()
+    {
+        $rule = new Authorized('edit', TestRouteKeyModel::class, column: 'id');
+
+        $user = User::factory()->create(['id' => 1]);
+        TestRouteKeyModel::create([
+            'id' => 1,
+            'name' => 'abc123',
+            'user_id' => 1,
+        ]);
+
+        $this->actingAs($user);
+
+        $this->assertTrue($rule->passes('attribute', '1'));
+    }
+
+    /** @test */
     public function it_will_pass_if_alternate_auth_guard_is_specified()
     {
         $rule = new Authorized('edit', TestModel::class, 'alternate');
