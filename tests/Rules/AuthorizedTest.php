@@ -112,7 +112,7 @@ class AuthorizedTest extends TestCase
     }
 
     /** @test */
-    public function it_will_pass_when_using_alternate_route_key_name()
+    public function it_will_pass_when_using_alternate_column_name()
     {
         $rule = new Authorized('edit', TestRouteKeyModel::class, column: 'id');
 
