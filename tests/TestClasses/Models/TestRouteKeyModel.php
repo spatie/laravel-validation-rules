@@ -12,7 +12,7 @@ class TestRouteKeyModel extends Model
 
     protected $table = 'test_models';
 
-    public function getRouteKeyName()
+    public function getRouteKeyName(): string
     {
         return 'name';
     }
