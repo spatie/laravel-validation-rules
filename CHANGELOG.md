@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 3.3.1 - 2023-05-29
+
+### What's Changed
+
+- Convert test to pest by @lloricode in https://github.com/spatie/laravel-validation-rules/pull/65
+- Add parameter column on `Authorized`, use php8 syntax by @lloricode in https://github.com/spatie/laravel-validation-rules/pull/64
+- Use pest on composer test script by @lloricode in https://github.com/spatie/laravel-validation-rules/pull/66
+
+### New Contributors
+
+- @lloricode made their first contribution in https://github.com/spatie/laravel-validation-rules/pull/65
+
+**Full Changelog**: https://github.com/spatie/laravel-validation-rules/compare/3.3.0...3.3.1
+
 ## 3.3.0 - 2023-05-09
 
 ### What's Changed
