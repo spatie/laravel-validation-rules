@@ -42,8 +42,8 @@
         "league/iso3166": "Needed for the CountryCode rule and Currency rule"
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage-html coverage",
         "format": "./vendor/bin/pint",
         "inspect": "./vendor/bin/pint --test"
     },
