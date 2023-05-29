@@ -94,6 +94,21 @@ it('will pass when using alternate route key name', function () {
     assertTrue($rule->passes('attribute', 'abc123'));
 });
 
+it('will pass when using alternate column name', function () {
+    $rule = new Authorized('edit', TestRouteKeyModel::class, column: 'id');
+
+    $user = User::factory()->create(['id' => 1]);
+    TestRouteKeyModel::create([
+        'id' => 1,
+        'name' => 'abc123',
+        'user_id' => 1,
+    ]);
+
+    $this->actingAs($user);
+
+    assertTrue($rule->passes('attribute', '1'));
+});
+
 it('will pass if alternate auth guard is specified', function () {
     $rule = new Authorized('edit', TestModel::class, 'alternate');
 
