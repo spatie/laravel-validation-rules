@@ -1,59 +1,48 @@
 <?php
 
-namespace Spatie\ValidationRules\Tests\Rules;
-
 use Illuminate\Support\Facades\Lang;
+use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertFalse;
+use function PHPUnit\Framework\assertTrue;
 use Spatie\ValidationRules\Rules\Enum;
-use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Tests\TestClasses\Enums\MyCLabsEnum;
 
-class EnumTest extends TestCase
-{
-    /** @test */
-    public function myclabs_it_will_return_true_for_a_value_that_is_part_of_the_enum()
-    {
-        $rule = new Enum(MyCLabsEnum::class);
+test('myclabs it will return true for a value that is part of the enum', function () {
+    $rule = new Enum(MyCLabsEnum::class);
 
-        $this->assertTrue($rule->passes('attribute', 'ONE'));
+    assertTrue($rule->passes('attribute', 'ONE'));
 
-        $this->assertFalse($rule->passes('attribute', 'FOUR'));
-    }
+    assertFalse($rule->passes('attribute', 'FOUR'));
+});
 
-    /** @test */
-    public function myclabs_it_passes_attribute_and_valid_values_to_the_validation_message()
-    {
-        Lang::addLines([
-            'messages.enum' => ':attribute :validValues',
-        ], Lang::getLocale(), 'validationRules');
+test('myclabs it passes attribute and valid values to the validation message', function () {
+    Lang::addLines([
+        'messages.enum' => ':attribute :validValues',
+    ], Lang::getLocale(), 'validationRules');
 
-        $rule = new Enum(MyCLabsEnum::class);
+    $rule = new Enum(MyCLabsEnum::class);
 
-        $rule->passes('enum_field', 'abc');
+    $rule->passes('enum_field', 'abc');
 
-        $this->assertEquals('enum_field ONE, TWO, THREE', $rule->message());
-    }
+    assertEquals('enum_field ONE, TWO, THREE', $rule->message());
+});
 
-    /** @test */
-    public function spatie_it_will_return_true_for_a_value_that_is_part_of_the_enum()
-    {
-        $rule = new Enum(MyCLabsEnum::class);
+test('spatie it will return true for a value that is part of the enum', function () {
+    $rule = new Enum(MyCLabsEnum::class);
 
-        $this->assertTrue($rule->passes('attribute', 'ONE'));
+    assertTrue($rule->passes('attribute', 'ONE'));
 
-        $this->assertFalse($rule->passes('attribute', 'FOUR'));
-    }
+    assertFalse($rule->passes('attribute', 'FOUR'));
+});
 
-    /** @test */
-    public function spatie_it_passes_attribute_and_valid_values_to_the_validation_message()
-    {
-        Lang::addLines([
-            'messages.enum' => ':attribute :validValues',
-        ], Lang::getLocale(), 'validationRules');
+test('spatie it passes attribute and valid values to the validation message', function () {
+    Lang::addLines([
+        'messages.enum' => ':attribute :validValues',
+    ], Lang::getLocale(), 'validationRules');
 
-        $rule = new Enum(MyCLabsEnum::class);
+    $rule = new Enum(MyCLabsEnum::class);
 
-        $rule->passes('enum_field', 'abc');
+    $rule->passes('enum_field', 'abc');
 
-        $this->assertEquals('enum_field ONE, TWO, THREE', $rule->message());
-    }
-}
+    assertEquals('enum_field ONE, TWO, THREE', $rule->message());
+});

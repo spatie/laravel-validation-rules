@@ -1,162 +1,138 @@
 <?php
 
-namespace Spatie\ValidationRules\Tests\Rules;
-
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Lang;
+use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertFalse;
+use function PHPUnit\Framework\assertTrue;
 use Spatie\ValidationRules\Rules\Authorized;
-use Spatie\ValidationRules\Tests\TestCase;
 use Spatie\ValidationRules\Tests\TestClasses\Models\TestModel;
 use Spatie\ValidationRules\Tests\TestClasses\Models\TestRouteKeyModel;
 use Spatie\ValidationRules\Tests\TestClasses\Policies\TestModelPolicy;
 use Spatie\ValidationRules\Tests\TestClasses\Policies\TestRouteKeyModelPolicy;
 use Spatie\ValidationRules\Tests\TestModel\User;
 
-class AuthorizedTest extends TestCase
-{
-    public function setUp(): void
-    {
-        parent::setUp();
+beforeEach(function () {
+    Gate::policy(TestModel::class, TestModelPolicy::class);
+    Gate::policy(TestRouteKeyModel::class, TestRouteKeyModelPolicy::class);
+});
 
-        Gate::policy(TestModel::class, TestModelPolicy::class);
-        Gate::policy(TestRouteKeyModel::class, TestRouteKeyModelPolicy::class);
-    }
+it('will return true if the gate returns true for the given ability name', function () {
+    $rule = new Authorized('edit', TestModel::class);
 
-    /** @test */
-    public function it_will_return_true_if_the_gate_returns_true_for_the_given_ability_name()
-    {
-        $rule = new Authorized('edit', TestModel::class);
+    $user = User::factory()->create(['id' => 1]);
+    TestModel::create([
+        'id' => 1,
+        'user_id' => $user->id,
+    ]);
 
-        $user = User::factory()->create(['id' => 1]);
-        TestModel::create([
-            'id' => 1,
-            'user_id' => $user->id,
-        ]);
+    $this->actingAs($user);
 
-        $this->actingAs($user);
+    assertTrue($rule->passes('attribute', '1'));
+});
 
-        $this->assertTrue($rule->passes('attribute', '1'));
-    }
+it('will return false if none is logged in', function () {
+    $rule = new Authorized('edit', TestModel::class);
 
-    /** @test */
-    public function it_will_return_false_if_noone_is_logged_in()
-    {
-        $rule = new Authorized('edit', TestModel::class);
+    $user = User::factory()->create(['id' => 1]);
+    TestModel::create([
+        'id' => 1,
+        'user_id' => $user->id,
+    ]);
 
-        $user = User::factory()->create(['id' => 1]);
-        TestModel::create([
-            'id' => 1,
-            'user_id' => $user->id,
-        ]);
+    assertFalse($rule->passes('attribute', '1'));
+});
 
-        $this->assertFalse($rule->passes('attribute', '1'));
-    }
+it('will return false if the model is not found', function () {
+    $rule = new Authorized('edit', TestModel::class);
 
-    /** @test */
-    public function it_will_return_false_if_the_model_is_not_found()
-    {
-        $rule = new Authorized('edit', TestModel::class);
+    $user = User::factory()->create(['id' => 1]);
+    TestModel::create([
+        'id' => 1,
+        'user_id' => $user->id,
+    ]);
 
-        $user = User::factory()->create(['id' => 1]);
-        TestModel::create([
-            'id' => 1,
-            'user_id' => $user->id,
-        ]);
+    assertFalse($rule->passes('attribute', '2'));
+});
 
-        $this->assertFalse($rule->passes('attribute', '2'));
-    }
+it('will return false if the gate returns false', function () {
+    $rule = new Authorized('edit', TestModel::class);
 
-    /** @test */
-    public function it_will_return_false_if_the_gate_returns_false()
-    {
-        $rule = new Authorized('edit', TestModel::class);
+    User::factory()->create(['id' => 1]);
+    TestModel::create([
+        'id' => 1,
+        'user_id' => 2,
+    ]);
 
-        $user = User::factory()->create(['id' => 1]);
-        TestModel::create([
-            'id' => 1,
-            'user_id' => 2,
-        ]);
+    assertFalse($rule->passes('attribute', '1'));
+});
 
-        $this->assertFalse($rule->passes('attribute', '1'));
-    }
+it('passes attribute ability and class name to the validation message', function () {
+    Lang::addLines([
+        'messages.authorized' => ':attribute :ability and :className',
+    ], Lang::getLocale(), 'validationRules');
 
-    /** @test */
-    public function it_passes_attribute_ability_and_class_name_to_the_validation_message()
-    {
-        Lang::addLines([
-            'messages.authorized' => ':attribute :ability and :className',
-        ], Lang::getLocale(), 'validationRules');
+    $rule = new Authorized('edit', TestModel::class);
 
-        $rule = new Authorized('edit', TestModel::class);
+    $rule->passes('name_field', 'John Doe');
 
-        $rule->passes('name_field', 'John Doe');
+    assertEquals('name_field edit and TestModel', $rule->message());
+});
 
-        $this->assertEquals('name_field edit and TestModel', $rule->message());
-    }
+it('will pass when using alternate route key name', function () {
+    $rule = new Authorized('edit', TestRouteKeyModel::class);
 
-    /** @test */
-    public function it_will_pass_when_using_alternate_route_key_name()
-    {
-        $rule = new Authorized('edit', TestRouteKeyModel::class);
+    $user = User::factory()->create(['id' => 1]);
+    TestRouteKeyModel::create([
+        'id' => 1,
+        'name' => 'abc123',
+        'user_id' => 1,
+    ]);
 
-        $user = User::factory()->create(['id' => 1]);
-        TestRouteKeyModel::create([
-            'id' => 1,
-            'name' => 'abc123',
-            'user_id' => 1,
-        ]);
+    $this->actingAs($user);
 
-        $this->actingAs($user);
+    assertTrue($rule->passes('attribute', 'abc123'));
+});
 
-        $this->assertTrue($rule->passes('attribute', 'abc123'));
-    }
+it('will pass when using alternate column name', function () {
+    $rule = new Authorized('edit', TestRouteKeyModel::class, column: 'id');
 
-    /** @test */
-    public function it_will_pass_when_using_alternate_column_name()
-    {
-        $rule = new Authorized('edit', TestRouteKeyModel::class, column: 'id');
+    $user = User::factory()->create(['id' => 1]);
+    TestRouteKeyModel::create([
+        'id' => 1,
+        'name' => 'abc123',
+        'user_id' => 1,
+    ]);
 
-        $user = User::factory()->create(['id' => 1]);
-        TestRouteKeyModel::create([
-            'id' => 1,
-            'name' => 'abc123',
-            'user_id' => 1,
-        ]);
+    $this->actingAs($user);
 
-        $this->actingAs($user);
+    assertTrue($rule->passes('attribute', '1'));
+});
 
-        $this->assertTrue($rule->passes('attribute', '1'));
-    }
+it('will pass if alternate auth guard is specified', function () {
+    $rule = new Authorized('edit', TestModel::class, 'alternate');
 
-    /** @test */
-    public function it_will_pass_if_alternate_auth_guard_is_specified()
-    {
-        $rule = new Authorized('edit', TestModel::class, 'alternate');
+    $user = User::factory()->create(['id' => 1]);
+    TestModel::create([
+        'id' => 1,
+        'user_id' => 1,
+    ]);
 
-        $user = User::factory()->create(['id' => 1]);
-        TestModel::create([
-            'id' => 1,
-            'user_id' => 1,
-        ]);
+    $this->actingAs($user, 'alternate');
 
-        $this->actingAs($user, 'alternate');
+    assertTrue($rule->passes('attribute', '1'));
+});
 
-        $this->assertTrue($rule->passes('attribute', '1'));
-    }
+it('will return false if auth guard is incorrect', function () {
+    $rule = new Authorized('edit', TestModel::class, 'web');
 
-    /** @test */
-    public function it_will_return_false_if_auth_guard_is_incorrect()
-    {
-        $rule = new Authorized('edit', TestModel::class, 'web');
+    $user = User::factory()->create(['id' => 1]);
+    TestModel::create([
+        'id' => 1,
+        'user_id' => 1,
+    ]);
 
-        $user = User::factory()->create(['id' => 1]);
-        TestModel::create([
-            'id' => 1,
-            'user_id' => 1,
-        ]);
+    $this->actingAs($user, 'alternate');
 
-        $this->actingAs($user, 'alternate');
-
-        $this->assertFalse($rule->passes('attribute', '1'));
-    }
-}
+    assertFalse($rule->passes('attribute', '1'));
+});
