@@ -1,7 +1,7 @@
 # A set of useful Laravel validation rules
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-validation-rules.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-validation-rules)
-![Tests](https://github.com/spatie/package-skeleton-laravel/workflows/Tests/badge.svg)
+[![Tests](https://img.shields.io/github/actions/workflow/status/spatie/laravel-validation-rules/run-tests.yml?branch=main&label=Tests)](https://github.com/spatie/laravel-validation-rules/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-validation-rules.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-validation-rules)
 
 This repository contains some useful Laravel validation rules.
