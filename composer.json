@@ -56,7 +56,6 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\ValidationRules\\ValidationRulesServiceProvider"
             ]
         }
     },

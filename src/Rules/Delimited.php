@@ -99,28 +99,24 @@ class Delimited implements Rule
                 return strlen((string) $item) > 0;
             });
 
-        if (! is_null($this->minimum)) {
-            if ($items->count() < $this->minimum) {
-                $this->message = $this->getErrorMessage($attribute, 'min', [
-                    'min' => $this->minimum,
-                    'actual' => $items->count(),
-                    'item' => Str::plural($this->validationMessageWord, $items->count()),
-                ]);
+        if (!is_null($this->minimum) && $items->count() < $this->minimum) {
+            $this->message = $this->getErrorMessage($attribute, 'min', [
+                'min' => $this->minimum,
+                'actual' => $items->count(),
+                'item' => Str::plural($this->validationMessageWord, $items->count()),
+            ]);
 
-                return false;
-            }
+            return false;
         }
 
-        if (! is_null($this->maximum)) {
-            if ($items->count() > $this->maximum) {
-                $this->message = $this->getErrorMessage($attribute, 'max', [
-                    'max' => $this->maximum,
-                    'actual' => $items->count(),
-                    'item' => Str::plural($this->validationMessageWord, $items->count()),
-                ]);
+        if (!is_null($this->maximum) && $items->count() > $this->maximum) {
+            $this->message = $this->getErrorMessage($attribute, 'max', [
+                'max' => $this->maximum,
+                'actual' => $items->count(),
+                'item' => Str::plural($this->validationMessageWord, $items->count()),
+            ]);
 
-                return false;
-            }
+            return false;
         }
 
         if ($this->trimItems) {
@@ -132,19 +128,17 @@ class Delimited implements Rule
         foreach ($items as $item) {
             [$isValid, $validationMessage] = $this->validate($attribute, $item);
 
-            if (! $isValid) {
+            if (!$isValid) {
                 $this->message = $validationMessage;
 
                 return false;
             }
         }
 
-        if (! $this->allowDuplicates) {
-            if ($items->unique()->count() !== $items->count()) {
-                $this->message = $this->getErrorMessage($attribute, 'unique');
+        if (!$this->allowDuplicates && $items->unique()->count() !== $items->count()) {
+            $this->message = $this->getErrorMessage($attribute, 'unique');
 
-                return false;
-            }
+            return false;
         }
 
         return true;
@@ -173,10 +167,10 @@ class Delimited implements Rule
 
     protected function getErrorMessage($attribute, $rule, $data = [])
     {
-        if (array_key_exists($attribute.'.'.$rule, $this->customErrorMessages)) {
-            return __($this->customErrorMessages[$attribute.'.'.$rule], $data);
+        if (array_key_exists($attribute . '.' . $rule, $this->customErrorMessages)) {
+            return __($this->customErrorMessages[$attribute . '.' . $rule], $data);
         }
 
-        return __('validationRules::messages.delimited.'.$rule, $data);
+        return __('validationRules::messages.delimited.' . $rule, $data);
     }
 }
