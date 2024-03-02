@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 3.4.0 - 2024-03-02
+
+### What's Changed
+
+* Fix test badge by @erikn69 in https://github.com/spatie/laravel-validation-rules/pull/67
+* Laravel 11.x Compatibility by @laravel-shift in https://github.com/spatie/laravel-validation-rules/pull/70
+
+### New Contributors
+
+* @erikn69 made their first contribution in https://github.com/spatie/laravel-validation-rules/pull/67
+
+**Full Changelog**: https://github.com/spatie/laravel-validation-rules/compare/3.3.1...3.4.0
+
 ## 3.3.1 - 2023-05-29
 
 ### What's Changed
