@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 3.4.1 - 2025-02-17
+
+### What's Changed
+
+* Fixed typo in README.md by @snipe in https://github.com/spatie/laravel-validation-rules/pull/71
+* Laravel 12.x Compatibility by @laravel-shift in https://github.com/spatie/laravel-validation-rules/pull/72
+
+### New Contributors
+
+* @snipe made their first contribution in https://github.com/spatie/laravel-validation-rules/pull/71
+
+**Full Changelog**: https://github.com/spatie/laravel-validation-rules/compare/3.4.0...3.4.1
+
 ## 3.4.0 - 2024-03-02
 
 ### What's Changed
