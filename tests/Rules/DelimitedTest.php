@@ -143,6 +143,8 @@ it('can only validate string values', function () {
     $this->assertTrue($rule->passes('attribute', '555'));
     $this->assertTrue($rule->passes('attribute', '[foo]'));
     $this->assertTrue($rule->passes('attribute', 'null'));
+
+    $this->assertSame($rule->message(), 'attribute must be a string');
 });
 
 function assertRulePasses(string $value): void

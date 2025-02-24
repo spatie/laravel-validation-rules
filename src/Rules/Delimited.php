@@ -91,6 +91,10 @@ class Delimited implements Rule
     public function passes($attribute, $value)
     {
         if (! is_string($value)) {
+            $this->message = $this->getErrorMessage($attribute, 'string', [
+                'attribute' => $attribute,
+            ]);
+
             return false;
         }
 
