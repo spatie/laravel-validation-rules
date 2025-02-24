@@ -18,10 +18,6 @@ jobs:
         include:
           - laravel: 10.*
             testbench: 8.*
-          - laravel: 9.*
-            testbench: 7.*
-          - laravel: 8.*
-            testbench: ^6.23
           - laravel: 11.*
             testbench: 9.*
           - laravel: 12.*
