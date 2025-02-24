@@ -130,6 +130,20 @@ it('can handle custom error messages', function () {
     $this->assertSame($rule->message(), 'a custom message comes here.');
 });
 
+it('can only validate string values', function() {
+    $rule = new Delimited('string');
+
+    $this->assertFalse($rule->passes('attribute', ['foo']));
+    $this->assertFalse($rule->passes('attribute', (object) ['foo' => 'bar']));
+    $this->assertFalse($rule->passes('attribute', 555));
+    $this->assertFalse($rule->passes('attribute', [123]));
+    $this->assertFalse($rule->passes('attribute', null));
+
+    $this->assertTrue($rule->passes('attribute', "555"));
+    $this->assertTrue($rule->passes('attribute', "[foo]"));
+    $this->assertTrue($rule->passes('attribute', "null"));
+});
+
 function assertRulePasses(string $value): void
 {
     assertTrue(rulePasses($value));

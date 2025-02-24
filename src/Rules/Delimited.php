@@ -90,6 +90,10 @@ class Delimited implements Rule
 
     public function passes($attribute, $value)
     {
+        if (! is_string($value)) {
+            return false;
+        }
+
         if ($this->trimItems) {
             $value = trim($value);
         }
