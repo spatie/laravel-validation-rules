@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 3.4.2 - 2025-02-24
+
+### What's Changed
+
+* Only allow string values to be processed by @carestad in https://github.com/spatie/laravel-validation-rules/pull/74
+
+### New Contributors
+
+* @carestad made their first contribution in https://github.com/spatie/laravel-validation-rules/pull/74
+
+**Full Changelog**: https://github.com/spatie/laravel-validation-rules/compare/3.4.1...3.4.2
+
 ## 3.4.1 - 2025-02-17
 
 ### What's Changed
