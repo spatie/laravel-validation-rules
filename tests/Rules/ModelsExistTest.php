@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Lang;
+use Spatie\ValidationRules\Rules\ModelsExist;
+use Spatie\ValidationRules\Tests\TestModel\User;
+
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
-use Spatie\ValidationRules\Rules\ModelsExist;
-use Spatie\ValidationRules\Tests\TestModel\User;
 
 it('will return true if all model ids exist', function () {
     $rule = new ModelsExist(User::class);

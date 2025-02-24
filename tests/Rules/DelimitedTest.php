@@ -1,10 +1,11 @@
 <?php
 
-use function PHPUnit\Framework\assertFalse;
-use function PHPUnit\Framework\assertTrue;
 use Spatie\ValidationRules\Rules\Delimited;
 use Spatie\ValidationRules\Rules\Enum;
 use Spatie\ValidationRules\Tests\TestClasses\Enums\MyCLabsEnum;
+
+use function PHPUnit\Framework\assertFalse;
+use function PHPUnit\Framework\assertTrue;
 
 beforeEach(fn () => $this->rule = (new Delimited('email')));
 
@@ -130,7 +131,7 @@ it('can handle custom error messages', function () {
     $this->assertSame($rule->message(), 'a custom message comes here.');
 });
 
-it('can only validate string values', function() {
+it('can only validate string values', function () {
     $rule = new Delimited('string');
 
     $this->assertFalse($rule->passes('attribute', ['foo']));
@@ -139,9 +140,9 @@ it('can only validate string values', function() {
     $this->assertFalse($rule->passes('attribute', [123]));
     $this->assertFalse($rule->passes('attribute', null));
 
-    $this->assertTrue($rule->passes('attribute', "555"));
-    $this->assertTrue($rule->passes('attribute', "[foo]"));
-    $this->assertTrue($rule->passes('attribute', "null"));
+    $this->assertTrue($rule->passes('attribute', '555'));
+    $this->assertTrue($rule->passes('attribute', '[foo]'));
+    $this->assertTrue($rule->passes('attribute', 'null'));
 });
 
 function assertRulePasses(string $value): void

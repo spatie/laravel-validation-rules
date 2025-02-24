@@ -14,8 +14,7 @@ class Authorized implements Rule
         protected string $className,
         protected ?string $guard = null,
         protected ?string $column = null,
-    ) {
-    }
+    ) {}
 
     public function passes($attribute, $value): bool
     {
