@@ -1,24 +1,25 @@
 <?php
 
 use Illuminate\Support\Facades\Validator;
-use function PHPUnit\Framework\assertFalse;
-use function PHPUnit\Framework\assertTrue;
 use Spatie\ValidationRules\Rules\Currency;
 
+use function PHPUnit\Framework\assertFalse;
+use function PHPUnit\Framework\assertTrue;
+
 test('valid currency passes', function () {
-    assertTrue((new Currency())->passes('currency', 'USD'));
+    assertTrue((new Currency)->passes('currency', 'USD'));
 });
 
 test('invalid currency fails', function () {
-    assertFalse((new Currency())->passes('currency', 'XYZ'));
+    assertFalse((new Currency)->passes('currency', 'XYZ'));
 });
 
 test('null currency fails', function () {
-    assertFalse((new Currency())->passes('currency', null));
+    assertFalse((new Currency)->passes('currency', null));
 });
 
 test('empty currency fails', function () {
-    assertFalse((new Currency())->passes('currency', ''));
+    assertFalse((new Currency)->passes('currency', ''));
 });
 
 test('nullable field', function () {
@@ -27,7 +28,7 @@ test('nullable field', function () {
             'currency' => null,
         ],
         [
-            'currency' => ['nullable', new Currency()],
+            'currency' => ['nullable', new Currency],
         ]
     )->passes());
 
@@ -36,7 +37,7 @@ test('nullable field', function () {
             'currency' => null,
         ],
         [
-            'currency' => [new Currency()],
+            'currency' => [new Currency],
         ]
     )->fails());
 });
@@ -47,7 +48,7 @@ test('empty field', function () {
             'currency' => '',
         ],
         [
-            'currency' => ['nullable', new Currency()],
+            'currency' => ['nullable', new Currency],
         ]
     )->passes());
 
@@ -56,7 +57,7 @@ test('empty field', function () {
             'currency' => '',
         ],
         [
-            'currency' => [new Currency()],
+            'currency' => [new Currency],
         ]
     )->passes());
 });
@@ -67,7 +68,7 @@ test('required field', function () {
             'currency' => null,
         ],
         [
-            'currency' => ['required', new Currency()],
+            'currency' => ['required', new Currency],
         ]
     )->fails());
 
@@ -76,7 +77,7 @@ test('required field', function () {
             'currency' => '',
         ],
         [
-            'currency' => ['required', new Currency()],
+            'currency' => ['required', new Currency],
         ]
     )->fails());
 
@@ -85,7 +86,7 @@ test('required field', function () {
             'currency' => 'USD',
         ],
         [
-            'currency' => ['required', new Currency()],
+            'currency' => ['required', new Currency],
         ]
     )->passes());
 });

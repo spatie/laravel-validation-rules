@@ -2,15 +2,16 @@
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Lang;
-use function PHPUnit\Framework\assertEquals;
-use function PHPUnit\Framework\assertFalse;
-use function PHPUnit\Framework\assertTrue;
 use Spatie\ValidationRules\Rules\Authorized;
 use Spatie\ValidationRules\Tests\TestClasses\Models\TestModel;
 use Spatie\ValidationRules\Tests\TestClasses\Models\TestRouteKeyModel;
 use Spatie\ValidationRules\Tests\TestClasses\Policies\TestModelPolicy;
 use Spatie\ValidationRules\Tests\TestClasses\Policies\TestRouteKeyModelPolicy;
 use Spatie\ValidationRules\Tests\TestModel\User;
+
+use function PHPUnit\Framework\assertEquals;
+use function PHPUnit\Framework\assertFalse;
+use function PHPUnit\Framework\assertTrue;
 
 beforeEach(function () {
     Gate::policy(TestModel::class, TestModelPolicy::class);

@@ -34,7 +34,7 @@ class CountryCode implements Rule
             return true;
         }
 
-        $countries = Arr::pluck((new ISO3166())->all(), ISO3166::KEY_ALPHA2);
+        $countries = Arr::pluck((new ISO3166)->all(), ISO3166::KEY_ALPHA2);
 
         return in_array($value, $countries, true);
     }

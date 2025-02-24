@@ -18,7 +18,7 @@ class Currency implements Rule
             return false;
         }
 
-        $currencies = array_unique(data_get((new ISO3166())->all(), '*.currency.*'));
+        $currencies = array_unique(data_get((new ISO3166)->all(), '*.currency.*'));
 
         return in_array($value, $currencies, true);
     }
