@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Lang;
+use Spatie\ValidationRules\Rules\Enum;
+use Spatie\ValidationRules\Tests\TestClasses\Enums\MyCLabsEnum;
+
 use function PHPUnit\Framework\assertEquals;
 use function PHPUnit\Framework\assertFalse;
 use function PHPUnit\Framework\assertTrue;
-use Spatie\ValidationRules\Rules\Enum;
-use Spatie\ValidationRules\Tests\TestClasses\Enums\MyCLabsEnum;
 
 test('myclabs it will return true for a value that is part of the enum', function () {
     $rule = new Enum(MyCLabsEnum::class);
