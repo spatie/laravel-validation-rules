@@ -10,5 +10,6 @@ return [
         'unique' => 'You may not specify duplicates.',
         'min' => 'You must specify at least :min :item',
         'max' => 'You can only specify :max :item',
+        'string' => ':attribute must be a string',
     ],
 ];
