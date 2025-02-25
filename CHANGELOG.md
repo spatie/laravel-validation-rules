@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 3.4.3 - 2025-02-25
+
+### What's Changed
+
+* Add delimiter string erorr message by @carestad in https://github.com/spatie/laravel-validation-rules/pull/76
+
+**Full Changelog**: https://github.com/spatie/laravel-validation-rules/compare/3.4.2...3.4.3
+
 ## 3.4.2 - 2025-02-24
 
 ### What's Changed
