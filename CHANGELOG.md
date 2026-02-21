@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-validation-rules` will be documented in this file
 
+## 3.4.4 - 2026-02-21
+
+Add Laravel 13 support
+
 ## 3.4.3 - 2025-02-25
 
 ### What's Changed
