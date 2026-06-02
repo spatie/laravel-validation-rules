@@ -2,7 +2,9 @@
 
 namespace Spatie\ValidationRules\Tests\TestClasses\Enums;
 
-class MyCLabsEnum extends \MyCLabs\Enum\Enum
+use MyCLabs\Enum\Enum;
+
+class MyCLabsEnum extends Enum
 {
     public const ONE = 'one';
 

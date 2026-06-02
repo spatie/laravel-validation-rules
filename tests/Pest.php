@@ -1,4 +1,6 @@
 <?php
 
-uses(Spatie\ValidationRules\Tests\TestCase::class)
+use Spatie\ValidationRules\Tests\TestCase;
+
+uses(TestCase::class)
     ->in(__DIR__);

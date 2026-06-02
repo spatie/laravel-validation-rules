@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 class Delimited implements Rule
 {
-    /** @var string|array|\Illuminate\Contracts\Validation\Rule */
+    /** @var string|array|Rule */
     protected $rule;
 
     protected $minimum = null;
